@@ -1,6 +1,6 @@
 NAME = fractol
 
-SRC = main.c
+SRC = main.c debug_01.c
 
 OBJ = $(SRC:.c=.o)
 

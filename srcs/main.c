@@ -1,7 +1,15 @@
-#include <stdio.h>
+#include "fractol.h"
 
-int		main(void)
+int		main(int ac, char **av)
 {
-	printf("je suis con\n");
+	t_fractol fract;
+
+
+	if (ac > 1)
+	{
+					
+	}
+	else
+		ft_putendl("hey bud give me a fractal name");
 	return (0);
 }
