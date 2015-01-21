@@ -1,0 +1,11 @@
+#exec
+fractol
+
+#obj
+*.o
+
+#lib
+*.a
+
+#tmp
+.*.sw*
