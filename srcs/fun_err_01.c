@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.h                                            :+:      :+:    :+:   */
+/*   fun_err_01.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/12 10:33:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/18 19:33:07 by bmbarga          ###   ########.fr       */
+/*   Created: 2014/11/08 16:49:17 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/01/12 09:05:36 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEBUG_H
-# define DEBUG_H
-# include "fractol.h"
+#include "check_errors.h"
+#include "libft.h"
 
-enum	e_type
+void		f_malloc(void)
 {
-	INT,
-	CHAR
-};
+	ERR_MALLOC;
+}
 
-/*
-** debug_01.h
-*/
-
-void		print_type(char *str, void *elem, int type);
-void		print_fract_type(char **type);
-void		print_fract(t_fractol *fractol);
-
-#endif
+void		f_nul(void)
+{
+	ERR_NULL;
+}

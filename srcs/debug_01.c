@@ -10,24 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
 #include "debug.h"
-
-void		print_base(t_base *base)
-{
-	print_type("o.x", &(base->o.pos.x), INT);
-	print_type("o.y", &(base->o.pos.y), INT);
-	ft_putendl("");
-	print_type("i.x", &(base->i.pos.x), INT);
-	print_type("i.y", &(base->i.pos.y), INT);
-	ft_putendl("");
-	print_type("j.x", &(base->j.pos.x), INT);
-	print_type("j.y", &(base->j.pos.y), INT);
-	ft_putendl("");
-	print_type("k.x", &(base->k.pos.x), INT);
-	print_type("k.y", &(base->k.pos.y), INT);
-	ft_putendl("");
-}
+#include "fractol.h"
+#include "check_errors.h"
 
 void		print_type(char *str, void *elem, int type)
 {
@@ -52,37 +37,26 @@ void		print_type(char *str, void *elem, int type)
 	}
 }
 
-void		print_map(char **map)
+void	print_fract_type(char **type)
 {
-	if (map)
+	int		i;
+
+	i = -1;
+	if (!type)
+		check_errors(NUL, "debug_01.c", "fract");
+	while (++i < TYPE_NBR)
 	{
-		while (*map)
-		{
-			ft_putstr("[");
-			ft_putstr(*map);
-			ft_putendl("]");
-			map++;
-		}
+		ft_putstr("type[");
+		ft_putnbr(i);
+		ft_putstr("] : [");
+		ft_putstr(type[i]);
+		ft_putendl("]");
 	}
 }
 
-void		print_tab(char ***tab)
+void	print_fract(t_fractol *fract)
 {
-	int		i;
-	int		j;
-
-	i = -1;
-	while (*(tab + ++i))
-	{
-		j = -1;
-		while (*(tab[i] + ++j))
-		{
-			ft_putstr("[");
-			ft_putstr(tab[i][j]);
-			ft_putstr("]");
-			if (tab[i][j + 1])
-				ft_putstr(" ");
-		}
-		ft_putendl("");
-	}
+	if (!fract)
+		check_errors(NUL, "debug_01.c", "fract");
+	print_fract_type(fract->type);
 }
