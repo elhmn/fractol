@@ -119,10 +119,10 @@ void		mandelbrot(t_fractol *fract)
 	while (++i < HEIGH)
 	{
 		j = -1;
-		a = ((double)i - (double)HEIGH / (double)2) / (double)STEP * (double)-1;
+		a = ((double)i - fract->c_y) / (double)STEP * (double)-1;
 		while (++j < WIDTH)
 		{
-			b = ((double)j - (double)WIDTH / (double)2) / (double)STEP;
+			b = ((double)j - fract->c_x) / (double)STEP;
 			fract->im = 0;
 			fract->re = 0;
 			get_color(fract, is_mandel(fract, b, a));

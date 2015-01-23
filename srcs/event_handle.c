@@ -8,12 +8,39 @@ int		key_release(int key, void *param)
 
 	fract = (t_fractol*)param;
 	fract = fract;
-	if (key == ESCAPE)
+	if (key == K_ESCAPE)
 	{
 		destroy_fract(fract);
 		exit(0);
 	}
+	if (key == K_LEFT)
+		fract->vel_l = 0;
+	if (key == K_RIGHT)
+		fract->vel_r = 0;
+	if (key == K_UP)
+		fract->vel_up = 0;
+	if (key == K_DOWN)
+		fract->vel_dwn = 0;
 //	print_type("key", &key, INT); /****/
+	return (0);
+}
+
+int		keypress_hook(int key, void *param)
+{
+	t_fractol	*fract;
+
+	fract = (t_fractol*)param;
+	fract = fract;
+	if (key == K_LEFT)
+		fract->vel_l = MOVE_X;
+	if (key == K_RIGHT)
+		fract->vel_r = -MOVE_X;
+	if (key == K_UP)
+		fract->vel_up = MOVE_Y;
+	if (key == K_DOWN)
+		fract->vel_dwn = -MOVE_X;
+//	print_type("key", &key, INT); /*********/
+	fract->refresh = 1;
 	return (0);
 }
 
@@ -38,6 +65,14 @@ void	set_frame(t_fractol *fract)
 	mlx_destroy_image(fract->mlx, fract->img);
 }
 
+void	move_center(t_fractol *fract)
+{
+	fract->c_x += fract->vel_l;
+	fract->c_x += fract->vel_r;
+	fract->c_y += fract->vel_dwn;
+	fract->c_y += fract->vel_up;
+}
+
 int		loop_hook(void *param)
 {
 	t_fractol	*fract;
@@ -46,6 +81,7 @@ int		loop_hook(void *param)
 	if (fract->refresh)
 	{
 		set_frame(fract);
+		move_center(fract);
 		fract->refresh = 0;
 	}
 	return (0);

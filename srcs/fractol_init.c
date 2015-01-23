@@ -67,5 +67,11 @@ void	init_fract(t_fractol *fract, char *name)
 	if (!(fract->lay = (t_lay*)malloc(sizeof(t_lay))))
 		check_errors(MALLOC, "fractol_init.c", "fract->lay");
 	init_col_type(fract);
-	init_col_tab(fract, 4);
+	init_col_tab(fract, 3);
+	fract->vel_l = 0;
+	fract->vel_r = 0;
+	fract->vel_up = 0;
+	fract->vel_dwn = 0;
+	fract->c_x = (double)WIDTH / (double)2;
+	fract->c_y = (double)HEIGH / (double)2;
 }

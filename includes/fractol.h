@@ -2,18 +2,38 @@
 # define FRACTOL_H
 
 # include "libft.h"
+# include "X.h"
 # include <mlx.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <errno.h>
 
 # define TITLE		"Explorateur de fractales"
-# define WIDTH		1920
-# define HEIGH		1080
+
+/*
+** #define HOME
+*/
+
+# define FT
+
+# ifdef HOME
+
+#  define WIDTH		3840
+#  define HEIGH		2160
+
+# endif
+
+# ifdef FT
+
+#  define WIDTH		1920
+#  define HEIGH		1080
+
+# endif
+
 # define COL_NBR	5
 # define COL_TYPE	5
-# define STEP		400
-# define ITER		100
+# define STEP		300
+# define ITER		70
 
 # define TYPE_NBR	3
 # define JULIA		0
@@ -70,7 +90,17 @@
 # define JUL		"julia"
 # define KLEIN		"kleinian"
 
-# define ESCAPE		65307
+# define MOVE_X		5
+# define MOVE_Y		5
+
+# define K_ESCAPE 65307
+# define K_UP 65362
+# define K_DOWN 65364
+# define K_RIGHT 65363
+# define K_LEFT 65361
+//# define K_ENTER 65293
+//# define K_PLUS 65451
+//# define K_MOINS 65453
 
 typedef unsigned int		t_uint;
 typedef struct s_color		t_color;
@@ -91,6 +121,12 @@ struct					s_fractol
 	double			re;
 	int				*col_tab;
 	int				**col_type;
+	double			vel_l;
+	double			vel_r;
+	double			vel_up;
+	double			vel_dwn;
+	double			c_x;
+	double			c_y;
 	t_lay			*lay;
 	t_color			*color;
 	t_fun_fract		*fun_fract;
@@ -182,5 +218,6 @@ void		kleinian(t_fractol *fract);
 void		set_frame(t_fractol *fract);
 int			key_release(int key, void *param);
 int			loop_hook(void *param);
+int			keypress_hook(int key, void *param);
 
 #endif

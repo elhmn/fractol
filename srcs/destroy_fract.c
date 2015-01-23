@@ -20,9 +20,8 @@ void	destroy_fract(t_fractol *fract)
 	destroy_type(fract);
 	if (fract->win)
 		mlx_destroy_window(fract->mlx, fract->win);
-//	if (fract->img)
-//		mlx_destroy_image(fract->mlx, fract->img);
-	free(fract->fun_fract);
+	if (fract->fun_fract)
+		free(fract->fun_fract);
 	if (fract->color)
 		free(fract->color);
 	if (fract->lay)
