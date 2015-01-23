@@ -38,3 +38,45 @@ void		pixel_put_img(t_fractol *fract, int x, int y, t_color *col)
 		}
 	}
 }
+
+static void		aux_low_light(t_color *color, t_uint inc)
+{
+	if ((int)color->r - (int)inc > 0)
+		color->r -= inc;
+	else
+		color->r = 0;
+	if ((int)color->g - (int)inc > 0)
+		color->g -= inc;
+	else
+		color->g = 0;
+	if (((int)color->b - (int)inc) > 0)
+		color->b -= inc;
+	else
+		color->b = 0;
+}
+
+t_color				*low_light(t_color *color, t_uint inc, t_uint sign)
+{
+	if (color)
+	{
+		if (sign > 0)
+		{
+			if ((int)color->r + (int)inc < 256)
+				color->r += inc;
+			else
+				color->r = 255;
+			if ((int)color->g + (int)inc < 256)
+				color->g += inc;
+			else
+				color->g = 255;
+			if ((int)color->b + (int)inc < 256)
+				color->b += inc;
+			else
+				color->b = 255;
+		}
+		else
+			aux_low_light(color, inc);
+		color->color = rgb_to_color(color->r, color->g, color->b);
+	}
+	return (color);
+}

@@ -11,9 +11,9 @@
 # define WIDTH		1920
 # define HEIGH		1080
 # define COL_NBR	5
-# define COL_TYPE	3
+# define COL_TYPE	5
 # define STEP		400
-# define ITER		20
+# define ITER		100
 
 # define TYPE_NBR	3
 # define JULIA		0
@@ -23,6 +23,10 @@
 # define MASK_R		0xFF0000
 # define MASK_G		0x00FF00
 # define MASK_B		0x0000FF
+
+/*
+** triad
+*/
 
 # define COL_T0_00	0x57BBCC
 # define COL_T0_01	0xFF4846
@@ -41,6 +45,26 @@
 # define COL_T2_02	0x4967CC
 # define COL_T2_03	0xFF420E
 # define COL_T2_04	0x0E34B2
+
+/*
+** analogous
+*/
+
+# define COL_T3_00	0xFFD70D
+# define COL_T3_01	0xE8AE0C
+# define COL_T3_02	0xFFA200
+# define COL_T3_03	0xE87C0C
+# define COL_T3_04	0xFF650D
+
+/*
+** shades
+*/
+
+# define COL_T4_00	0x7007BF
+# define COL_T4_01	0x4B057F
+# define COL_T4_02	0x950AFF
+# define COL_T4_03	0x250240
+# define COL_T4_04	0x8609E5
 
 # define MANDEL		"mandelbrot"
 # define JUL		"julia"
@@ -121,6 +145,7 @@ void		destroy_type(t_fractol *fract);
 */
 
 void		pixel_put_img(t_fractol *fract, int x, int y, t_color *col);
+t_color		*low_light(t_color *color, t_uint inc, t_uint sign);
 
 /*
 ** color.c

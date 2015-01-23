@@ -69,12 +69,19 @@ static int get_type(t_fractol *fract, int index)
 	return (-1);
 }
 
-static int	get_color(t_fractol *fract, int index)
+static t_color	*get_color(t_fractol *fract, int index)
 {
-	index = get_type(fract, index);
-	if (!index)
-		return (0);
-	return (fract->col_tab[index]);
+	int		i;
+	int		a;
+
+	i = get_type(fract, index);
+	a = fract->iter / COL_NBR;
+	a = a;
+	if (!i)
+		return ((fract->color = init_color(NULL, 0)));
+	fract->color = init_color(NULL, fract->col_tab[i]);
+	low_light(fract->color, (a * i - index), -1);
+	return (fract->color);
 }
 
 static int	is_mandel(t_fractol *fract, double x, double y)
@@ -97,8 +104,6 @@ static int	is_mandel(t_fractol *fract, double x, double y)
 	}
 	if (i < fract->iter) // suite divergente
 		return (i); //return la vitesse de divergence
-//	if (i >= fract->iter)
-//		ft_putendl("je converge"); /****************/
 	return (-1);
 }
 
@@ -108,7 +113,6 @@ void		mandelbrot(t_fractol *fract)
 	int		j;
 	double	a;
 	double	b;
-	int		color;
 
 	i = -1;
 	ft_putendl("je suis Mandelbrot");
@@ -121,8 +125,7 @@ void		mandelbrot(t_fractol *fract)
 			b = ((double)j - (double)WIDTH / (double)2) / (double)STEP;
 			fract->im = 0;
 			fract->re = 0;
-			color = get_color(fract, is_mandel(fract, b, a));
-			fract->color = init_color(NULL, color);
+			get_color(fract, is_mandel(fract, b, a));
 			pixel_put_img(fract, j, i, fract->color);
 		}
 	}

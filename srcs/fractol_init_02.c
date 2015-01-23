@@ -29,6 +29,24 @@ void	init_palette_02(int *tab)
 	tab[4] = COL_T2_04;
 }
 
+void	init_palette_03(int *tab)
+{	
+	tab[0] = COL_T3_00;
+	tab[1] = COL_T3_01;
+	tab[2] = COL_T3_02;
+	tab[3] = COL_T3_03;
+	tab[4] = COL_T3_04;
+}
+
+void	init_palette_04(int *tab)
+{	
+	tab[0] = COL_T4_00;
+	tab[1] = COL_T4_01;
+	tab[2] = COL_T4_02;
+	tab[3] = COL_T4_03;
+	tab[4] = COL_T4_04;
+}
+
 void	init_col_type(t_fractol *fract)
 {
 	int		**tab;
@@ -48,6 +66,8 @@ void	init_col_type(t_fractol *fract)
 	init_palette_00(tab[0]);
 	init_palette_01(tab[1]);
 	init_palette_02(tab[2]);
+	init_palette_03(tab[3]);
+	init_palette_04(tab[4]);
 }
 
 void	init_col_tab(t_fractol *fract, int type)
