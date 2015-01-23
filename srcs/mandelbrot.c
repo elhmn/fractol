@@ -1,4 +1,5 @@
 #include "fractol.h"
+#include "debug.h"
 
 
 /*
@@ -53,18 +54,77 @@ Ao = Bo = 0
 }
 */
 
-void	mandelbrot(t_fractol *fract)
+static int get_type(t_fractol *fract, int index)
+{
+	int		a;
+	int		i;
+
+	i = 0;
+	a = fract->iter / COL_NBR;
+	if (index == -1)
+		return (0);
+	while (++i < COL_NBR)
+		if (index < a * i)
+			return (i);
+	return (-1);
+}
+
+static int	get_color(t_fractol *fract, int index)
+{
+	index = get_type(fract, index);
+	if (!index)
+		return (0);
+	return (fract->col_tab[index]);
+}
+
+static int	is_mandel(t_fractol *fract, double x, double y)
+{
+	int			i;
+	double		tmp;
+	double		im;
+	double		re;
+
+	im = fract->im;
+	re = fract->re;
+	i = -1;
+	while (++i < fract->iter)
+	{
+		tmp = re * re - im * im + x;
+		im = 2 * im * re + y;
+		re = tmp;
+		if (re * re + im * im > 4.)
+			break;
+	}
+	if (i < fract->iter) // suite divergente
+		return (i); //return la vitesse de divergence
+//	if (i >= fract->iter)
+//		ft_putendl("je converge"); /****************/
+	return (-1);
+}
+
+void		mandelbrot(t_fractol *fract)
 {
 	int		i;
 	int		j;
+	double	a;
+	double	b;
+	int		color;
 
 	i = -1;
+	ft_putendl("je suis Mandelbrot");
 	while (++i < HEIGH)
 	{
 		j = -1;
-		while (j++)
+		a = ((double)i - (double)HEIGH / (double)2) / (double)STEP * (double)-1;
+		while (++j < WIDTH)
 		{
-
+			b = ((double)j - (double)WIDTH / (double)2) / (double)STEP;
+			fract->im = 0;
+			fract->re = 0;
+			color = get_color(fract, is_mandel(fract, b, a));
+			fract->color = init_color(NULL, color);
+			pixel_put_img(fract, j, i, fract->color);
 		}
 	}
+	ft_putendl("je sors de Mandelbrot");
 }

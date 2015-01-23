@@ -14,21 +14,21 @@
 #include "debug.h"
 #include "check_errors.h"
 
-void		pixel_put_img(t_fdf *fdf, int x, int y, t_color *col)
+void		pixel_put_img(t_fractol *fract, int x, int y, t_color *col)
 {
 	int		size;
 	char	*image;
 	t_lay	lay;
 	int		b;
 
-	lay = *(fdf->lay);
-	image = fdf->img;
+	lay = *(fract->lay);
+	image = fract->img_add;
 	if (col && image)
 	{
 		size = lay.line;
 		b = lay.bpp / 8;
 		x *= b;
-		if (size > 0 && (y < fdf->heigh && y >= 0)
+		if (size > 0 && (y < HEIGH && y >= 0)
 				&& (x >= 0 && x + lay.bpp / 8 < lay.line))
 		{
 			image[(y * (size)) + x + 0] = col->b;

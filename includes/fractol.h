@@ -7,14 +7,40 @@
 # include <stdio.h>
 # include <errno.h>
 
-# define TITLE	"Explorateur de fractales"
-# define WIDTH	1920
-# define HEIGH	1080
+# define TITLE		"Explorateur de fractales"
+# define WIDTH		1920
+# define HEIGH		1080
+# define COL_NBR	5
+# define COL_TYPE	3
+# define STEP		400
+# define ITER		20
 
 # define TYPE_NBR	3
 # define JULIA		0
 # define MANDELBROT	1
 # define KLEINIAN	2 
+
+# define MASK_R		0xFF0000
+# define MASK_G		0x00FF00
+# define MASK_B		0x0000FF
+
+# define COL_T0_00	0x57BBCC
+# define COL_T0_01	0xFF4846
+# define COL_T0_02	0x86FFCD
+# define COL_T0_03	0x138699
+# define COL_T0_04	0xCC3E80
+
+# define COL_T1_00	0xBFBC8A
+# define COL_T1_01	0x7F7D5C
+# define COL_T1_02	0xFF8B74
+# define COL_T1_03	0x40231D
+# define COL_T1_04	0x400818
+
+# define COL_T2_00	0x9BFF26
+# define COL_T2_01	0xB23A1A
+# define COL_T2_02	0x4967CC
+# define COL_T2_03	0xFF420E
+# define COL_T2_04	0x0E34B2
 
 # define MANDEL		"mandelbrot"
 # define JUL		"julia"
@@ -25,6 +51,7 @@
 typedef unsigned int		t_uint;
 typedef struct s_color		t_color;
 typedef struct s_fractol	t_fractol;
+typedef struct s_lay		t_lay;
 typedef void (*t_fun_fract)(t_fractol*);
 
 struct					s_fractol
@@ -33,6 +60,15 @@ struct					s_fractol
 	void			*win;
 	void			*mlx;
 	void			*img;
+	char			*img_add;
+	int				refresh;
+	int				iter;
+	double			im;
+	double			re;
+	int				*col_tab;
+	int				**col_type;
+	t_lay			*lay;
+	t_color			*color;
 	t_fun_fract		*fun_fract;
 	t_fun_fract		fractol;
 };
@@ -46,6 +82,13 @@ struct					s_color
 	unsigned int	b;
 };
 
+struct					s_lay
+{
+	int		line;
+	int		endian;
+	int		bpp;
+};
+
 /*
 ** fractol_init.c
 */
@@ -55,6 +98,16 @@ void		init_fract(t_fractol *fract, char *name);
 void		init_env(t_fractol *fract);
 void		fun_fract(t_fractol *fract);
 t_fun_fract	choose_type(t_fractol *fract, char *name);
+
+/*
+** fractol_init_02.c
+*/
+
+void		init_col_tab(t_fractol *fract, int type);
+void		init_col_type(t_fractol *fract);
+void		init_palette_00(int *tab);
+void		init_palette_01(int *tab);
+void		init_palette_02(int *tab);
 
 /*
 ** destroy_type.c
@@ -67,7 +120,7 @@ void		destroy_type(t_fractol *fract);
 ** draw.c
 */
 
-void		pixel_put_img(t_fdf *fdf, int x, int y, t_color *col);
+void		pixel_put_img(t_fractol *fract, int x, int y, t_color *col);
 
 /*
 ** color.c
@@ -75,33 +128,34 @@ void		pixel_put_img(t_fdf *fdf, int x, int y, t_color *col);
 
 void		set_color(t_color *col);
 void		print_color(t_color *color);
-t_uin		rgb_to_color(unsigned int r, unsigned int g, unsigned int b);
+t_uint		rgb_to_color(unsigned int r, unsigned int g, unsigned int b);
 void		set_color(t_color *col);
-t_color	*init_color(t_color *color, t_uint col);
+t_color		*init_color(t_color *color, t_uint col);
 
 /*
 ** julia.c
 */
 
-void		julia(t_fractol *fractol);
+void		julia(t_fractol *fract);
 
 /*
 ** mandelbrot.c
 */
 
-void		mandelbrot(t_fractol *fractol);
+void		mandelbrot(t_fractol *fract);
 
 /*
 ** kleinian.c
 */
 
-void		kleinian(t_fractol *fractol);
+void		kleinian(t_fractol *fract);
 
 /*
 ** event_handle.c
 */
 
+void		set_frame(t_fractol *fract);
 int			key_release(int key, void *param);
-
+int			loop_hook(void *param);
 
 #endif
