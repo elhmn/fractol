@@ -2,7 +2,7 @@ NAME = fractol
 
 SRC = main.c debug_01.c fractol_init.c check_errors.c fun_err_01.c \
 		destroy_fract.c julia.c mandelbrot.c kleinian.c event_handle.c \
-		fractol_init_02.c draw.c color.c
+		fractol_init_02.c draw.c color.c event_handle_2.c
 
 OBJ = $(SRC:.c=.o)
 

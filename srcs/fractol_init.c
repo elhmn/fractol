@@ -40,6 +40,7 @@ void	fun_fract(t_fractol *fract)
 		check_errors(NUL, "fractol_init.c", "fract->fun_fract");
 	(fract->fun_fract)[TYPE_NBR] = NULL;
 	fract->iter = ITER;
+	fract->step = STEP;
 	fract->fun_fract[0] = mandelbrot;
 	fract->fun_fract[1] = julia;
 	fract->fun_fract[2] = kleinian;
@@ -67,7 +68,7 @@ void	init_fract(t_fractol *fract, char *name)
 	if (!(fract->lay = (t_lay*)malloc(sizeof(t_lay))))
 		check_errors(MALLOC, "fractol_init.c", "fract->lay");
 	init_col_type(fract);
-	init_col_tab(fract, 3);
+	init_col_tab(fract, 4);
 	fract->vel_l = 0;
 	fract->vel_r = 0;
 	fract->vel_up = 0;

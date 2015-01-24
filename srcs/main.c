@@ -10,6 +10,7 @@ int					main(int ac, char **av)
 //		fract.fractol(&fract);
 		init_env(&fract);
 		mlx_key_hook(fract.win, key_release, &fract);
+		mlx_mouse_hook(fract.win, mouse_hook, &fract);
 		mlx_hook(fract.win, KeyPress, KeyPressMask, keypress_hook, &fract);
 		mlx_loop_hook(fract.mlx, loop_hook, &fract);
 //		mlx_expose_hook();

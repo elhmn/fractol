@@ -10,16 +10,18 @@
 
 # define TITLE		"Explorateur de fractales"
 
-/*
-** #define HOME
-*/
+///*
+ #define HOME
+//*/
 
-# define FT
+/*
+** # define FT
+*/
 
 # ifdef HOME
 
-#  define WIDTH		3840
-#  define HEIGH		2160
+#  define WIDTH		768
+#  define HEIGH		480
 
 # endif
 
@@ -32,8 +34,8 @@
 
 # define COL_NBR	5
 # define COL_TYPE	5
-# define STEP		300
-# define ITER		70
+# define STEP		200
+# define ITER		100
 
 # define TYPE_NBR	3
 # define JULIA		0
@@ -90,8 +92,13 @@
 # define JUL		"julia"
 # define KLEIN		"kleinian"
 
-# define MOVE_X		5
-# define MOVE_Y		5
+# define MOVE_X		10
+# define MOVE_Y		10
+
+# define MOUSE_MOTION_UP	4
+# define MOUSE_MOTION_DOWN	5
+# define MOUSE_MOTION_RIGHT	7
+# define MOUSE_MOTION_LEFT	6
 
 # define K_ESCAPE 65307
 # define K_UP 65362
@@ -117,6 +124,7 @@ struct					s_fractol
 	char			*img_add;
 	int				refresh;
 	int				iter;
+	int				step;
 	double			im;
 	double			re;
 	int				*col_tab;
@@ -219,5 +227,11 @@ void		set_frame(t_fractol *fract);
 int			key_release(int key, void *param);
 int			loop_hook(void *param);
 int			keypress_hook(int key, void *param);
+
+/*
+** event_handle_2.c
+*/
+
+int			mouse_hook(int button, int x, int y, void *param);
 
 #endif
