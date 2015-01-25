@@ -1,6 +1,6 @@
 #include "fractol.h"
 #include "debug.h"
-
+#include <stdio.h>
 
 /*
 Trace la fractale de Mandelbrot
@@ -116,18 +116,25 @@ void		mandelbrot(t_fractol *fract)
 
 	i = -1;
 	ft_putendl("je suis Mandelbrot");
+	a = (fract->c_y) / (double)fract->step * (double)-1;
+	printf(" 1 / k = [%lf]\n", (double)1 / fract->step);
+	printf(" k = [%lf]\n", (double)fract->step);
 	while (++i < HEIGH)
 	{
 		j = -1;
-		a = ((double)i - fract->c_y) / (double)fract->step * (double)-1;
+		b = (-1 * (fract->c_x)) / (double)fract->step;
 		while (++j < WIDTH)
 		{
-			b = ((double)j - fract->c_x) / (double)fract->step;
+			if ((!i && !j) || (!i && j == WIDTH - 1))
+				printf("(%.2lf, %.2lf)\n", a, b); /********************/
 			fract->im = 0;
 			fract->re = 0;
 			get_color(fract, is_mandel(fract, b, a));
 			pixel_put_img(fract, j, i, fract->color);
+			b += (double)1 / (double)fract->step;
 		}
+		a += (double)1 / (double)fract->step;
+//		printf("\n"); /**********/
 	}
 	ft_putendl("je sors de Mandelbrot");
 }

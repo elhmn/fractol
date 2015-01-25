@@ -20,8 +20,8 @@
 
 # ifdef HOME
 
-#  define WIDTH		768
-#  define HEIGH		480
+#  define WIDTH		400
+#  define HEIGH		400
 
 # endif
 
@@ -34,8 +34,8 @@
 
 # define COL_NBR	5
 # define COL_TYPE	5
-# define STEP		200
-# define ITER		100
+# define STEP		1
+# define ITER		30
 
 # define TYPE_NBR	3
 # define JULIA		0
@@ -123,12 +123,15 @@ struct					s_fractol
 	void			*img;
 	char			*img_add;
 	int				refresh;
-	int				iter;
-	int				step;
+	double				iter;
+	double			step;
+	double			step_tmp;	
 	double			im;
 	double			re;
 	int				*col_tab;
 	int				**col_type;
+	int				mouse_x;
+	int				mouse_y;
 	double			vel_l;
 	double			vel_r;
 	double			vel_up;

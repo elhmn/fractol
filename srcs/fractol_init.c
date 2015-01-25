@@ -39,8 +39,9 @@ void	fun_fract(t_fractol *fract)
 	if (!fract->fun_fract)
 		check_errors(NUL, "fractol_init.c", "fract->fun_fract");
 	(fract->fun_fract)[TYPE_NBR] = NULL;
-	fract->iter = ITER;
-	fract->step = STEP;
+	fract->iter = (double)ITER;
+	fract->step = (double)STEP;
+	fract->step_tmp = (double)STEP;
 	fract->fun_fract[0] = mandelbrot;
 	fract->fun_fract[1] = julia;
 	fract->fun_fract[2] = kleinian;
