@@ -41,12 +41,13 @@ void	fun_fract(t_fractol *fract)
 	(fract->fun_fract)[TYPE_NBR] = NULL;
 	fract->iter = (double)ITER;
 	fract->step = (double)STEP;
+	fract->mouse_x = 0;
+	fract->mouse_y = 0;
 	fract->step_tmp = (double)STEP;
 	fract->fun_fract[0] = mandelbrot;
 	fract->fun_fract[1] = julia;
 	fract->fun_fract[2] = kleinian;
 }
-
 
 void	init_env(t_fractol *fract)
 {

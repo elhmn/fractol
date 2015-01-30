@@ -83,6 +83,7 @@ int		loop_hook(void *param)
 		set_frame(fract);
 		move_center(fract);
 		fract->refresh = 0;
+		mlx_pixel_put(fract->mlx, fract->win, fract->mouse_x, fract->mouse_y, 0xFFFFFF); /**************/
 	}
 	return (0);
 }
