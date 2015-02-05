@@ -113,32 +113,57 @@ void		mandelbrot(t_fractol *fract)
 	int		j;
 	double	a;
 	double	b;
+	double	tmp;
+	double	m_x;
+	double	m_y;
 
 	i = -1;
 	ft_putendl("je suis Mandelbrot");/************/
-	//a = ((fract->c_y) / (double)fract->step) * (double)-1;
-	a = ((fract->c_y) / (double)fract->step) * (double)-1;
-	printf("fract->c_x = [%lf]\n", fract->c_x);/*******/
-	printf("fract->c_y = [%lf]\n", fract->c_y);/*******/
-	printf(" 1 / k = [%lf]\n", (double)1 / fract->step);/********/
-	printf(" k = [%lf]\n", (double)fract->step);/*********/
+
+/*
+** determiner les coord du pt M dans C
+*/
+
+	printf(" fract->c_x = [%.40lf]\n", (double)fract->c_x);/********/
+	printf(" fract->c_y =  [%.40lf]\n", (double)fract->c_y);/*********/
+	printf("MOusE_KEY BEFORE\n");
+	printf(" fract->m_x = [%.40lf]\n", (double)fract->m_x);/********/
+	printf(" fract->m_y =  [%.40lf]\n", (double)fract->m_y);/*********/
+	m_x = (double)(1. / fract->k) * (fract->m_x - fract->c_x);
+	m_y = (double)(1. / fract->k) * (double)(fract->c_y - fract->m_y);
+	printf("MOusE_KEY AFTER\n");
+	printf(" fract->m_x = [%.40lf]\n", (double)m_x);/********/
+	printf(" fract->m_y =  [%.40lf]\n", (double)m_y);/*********/
+
+	b = (double)1 / (double)fract->k; /****/
+	printf("k = [%lf]\n", fract->k);/*******/
+	printf("1 / k = [%lf]\n", b);/*******/
+
+	a = m_y + fract->h * (1. / fract->k);
+	tmp = m_x - fract->w * (1. / fract->k);
 	while (++i < HEIGH)
 	{
 		j = -1;
-	//	b = (-1 * (fract->c_x)) / (double)fract->step;
-		b = (-1 * (fract->c_x)) / (double)fract->step;
+		if (!i)
+		{
+			printf("BEFORE\n"); /******/
+			printf("fract->a = [%.40lf]\n", (double)a);/********/
+		}
+		b = tmp;
 		while (++j < WIDTH)
 		{
+			if (!j && !i)
+			{
+				printf("BEFORE\n"); /******/
+				printf("fract->b =  [%.40lf]\n", b);/*********/
+			}
 			fract->im = 0;
 			fract->re = 0;
 			get_color(fract, is_mandel(fract, b, a));
 			pixel_put_img(fract, j, i, fract->color);
-//			b += (double)1 / (double)fract->step;
-			b += (double)1 / (double)fract->step;
+			b += 1. / fract->k;
 		}
-//		a += (double)1 / (double)fract->step;
-		a += (double)1 / (double)fract->step;
-//		printf("\n"); /**********/
+		a -= 1. / fract->k;
 	}
 	ft_putendl("je sors de Mandelbrot");
 }

@@ -39,11 +39,7 @@ void	fun_fract(t_fractol *fract)
 	if (!fract->fun_fract)
 		check_errors(NUL, "fractol_init.c", "fract->fun_fract");
 	(fract->fun_fract)[TYPE_NBR] = NULL;
-	fract->iter = (double)ITER;
-	fract->step = (double)STEP;
-	fract->mouse_x = 0;
-	fract->mouse_y = 0;
-	fract->step_tmp = (double)STEP;
+
 	fract->fun_fract[0] = mandelbrot;
 	fract->fun_fract[1] = julia;
 	fract->fun_fract[2] = kleinian;
@@ -75,6 +71,35 @@ void	init_fract(t_fractol *fract, char *name)
 	fract->vel_r = 0;
 	fract->vel_up = 0;
 	fract->vel_dwn = 0;
+	fract->iter = (double)ITER;
+	fract->step = (double)STEP;
+	fract->step_tmp = (double)STEP;
+	fract->m_x = (double)WIDTH / (double)2;
+	fract->m_y = (double)HEIGH / (double)2;
 	fract->c_x = (double)WIDTH / (double)2;
 	fract->c_y = (double)HEIGH / (double)2;
+	fract->k = (double)STEP;
+	fract->w = WIDTH / 2.;
+	fract->h = HEIGH / 2.;
+	fract->a = (HEIGH / 2.) * (1. / (double)STEP);
+	fract->b = (WIDTH / 2.) * -1 * (1. / (double)STEP);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

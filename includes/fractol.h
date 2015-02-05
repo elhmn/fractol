@@ -11,12 +11,12 @@
 # define TITLE		"Explorateur de fractales"
 
 ///*
- #define HOME
+#define HOME
 //*/
 
-/*
-** # define FT
-*/
+///*
+//# define FT
+//*/
 
 # ifdef HOME
 
@@ -27,15 +27,19 @@
 
 # ifdef FT
 
-#  define WIDTH		1920
-#  define HEIGH		1080
+#  define WIDTH		1360
+#  define HEIGH		768
 
 # endif
 
 # define COL_NBR	5
 # define COL_TYPE	5
-# define STEP		1
-# define ITER		30
+# define STEP_DEF	2
+# define STEP_AUG	500
+# define STEP		10
+# define ITER_AUG	5
+# define ITER		10
+
 
 # define TYPE_NBR	3
 # define JULIA		0
@@ -123,15 +127,20 @@ struct					s_fractol
 	void			*img;
 	char			*img_add;
 	int				refresh;
-	double				iter;
-	double			step;
-	double			step_tmp;	
+	double			iter;
+	double			step; // can be consider as k
+	double			step_tmp;
 	double			im;
 	double			re;
 	int				*col_tab;
 	int				**col_type;
-	int				mouse_x;
-	int				mouse_y;
+	double			m_x;
+	double			m_y;
+	double			k;
+	double			w;
+	double			h;
+	double			a;
+	double			b;
 	double			vel_l;
 	double			vel_r;
 	double			vel_up;

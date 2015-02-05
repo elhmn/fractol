@@ -1,6 +1,7 @@
 #include "fractol.h"
 #include "check_errors.h"
 #include "debug.h"
+
 /*
 static void mouse_move_center(t_fractol *fract, int x, int y, int sign)
 {
@@ -18,6 +19,7 @@ static void mouse_move_center(t_fractol *fract, int x, int y, int sign)
 	fract->pre_c_y = fract->c_y;
 }
 */
+
 int		mouse_hook(int button, int x, int y, void *param)
 {
 	t_fractol	*fract;
@@ -25,8 +27,6 @@ int		mouse_hook(int button, int x, int y, void *param)
 	fract = (t_fractol*)param;
 	if (!fract)
 		check_errors(NUL, "event_handle_2.c", "fract");
-	fract->mouse_x = x;
-	fract->mouse_y = y;
 	if (button == MOUSE_MOTION_UP)
 	{
 		fract->step += STEP_DEF;
@@ -35,9 +35,6 @@ int		mouse_hook(int button, int x, int y, void *param)
 			fract->iter += ITER_AUG;
 			fract->step_tmp = fract->step;
 		}
-//		printf("fract->step_tmp = [%lf]\n", fract->step_tmp);/*******/
-//		printf("fract->step = [%lf]\n", fract->step);/*******/
-//		mouse_move_center(fract, x, y, 1);
 	}
 	if (button == MOUSE_MOTION_DOWN)
 	{
@@ -51,12 +48,14 @@ int		mouse_hook(int button, int x, int y, void *param)
 				fract->step_tmp = fract->step;
 			}
 		}
-//		mouse_move_center(fract, x, y, -1);
 	}
 	print_type("button", &button, INT);
 	print_type("x", &x, INT);
 	print_type("y", &y, INT);
 	fract->refresh = 1;
-	printf("iter = [%lf]\n", fract->iter);/*******/
+	fract->m_x = x;
+	fract->m_y = y;
+	fract->k = fract->step;
+	//Ce sont mes coords m_x qui sont fausse
 	return (0);
 }
