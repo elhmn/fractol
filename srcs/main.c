@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:43:57 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 22:08:13 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/06 22:17:10 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,10 @@ int					main(int ac, char **av)
 	if (ac > 1)
 	{
 		init_fract(&fract, av[1]);
-//		fract.fractol(&fract);
 		init_env(&fract);
 		mlx_key_hook(fract.win, key_release, &fract);
 		mlx_mouse_hook(fract.win, mouse_hook, &fract);
 		mlx_hook(fract.win, KeyPress, KeyPressMask, keypress_hook, &fract);
-		/*
-		** penser a gerer l'expose
-		*/
 		mlx_loop_hook(fract.mlx, loop_hook, &fract);
 		mlx_expose_hook(fract.win, expose_hook, &fract);
 		mlx_loop(fract.mlx);

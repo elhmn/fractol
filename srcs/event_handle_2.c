@@ -6,13 +6,28 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 22:08:35 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/06 22:26:25 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "check_errors.h"
 #include "debug.h"
+
+void	put_axis(t_fractol *fract, t_uint color)
+{
+	int		i;
+
+	if (fract)
+	{
+		i = -1;
+		while (++i < HEIGH)
+			mlx_pixel_put(fract->mlx, fract->win, fract->m_x, i, color);
+		i = -1;
+		while (++i < WIDTH)
+			mlx_pixel_put(fract->mlx, fract->win, i, fract->m_y, color);
+	}
+}
 
 int		expose_hook(void *param)
 {

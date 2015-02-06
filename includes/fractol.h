@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 22:07:55 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/06 22:49:09 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,6 +258,7 @@ int			keypress_hook(int key, void *param);
 ** event_handle_2.c
 */
 
+void		put_axis(t_fractol *fract, t_uint color);
 int			expose_hook(void *param);
 int			mouse_hook(int button, int x, int y, void *param);
 

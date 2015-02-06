@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:01 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 21:19:17 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/06 22:34:35 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,7 @@ int		loop_hook(void *param)
 		set_frame(fract);
 		move_center(fract);
 		fract->refresh = 0;
-		/*
-		** A la place du pixel put afficher un axe
-		*/
-		mlx_pixel_put(fract->mlx, fract->win, fract->m_x, fract->m_y, 0xFFFFFF00); /**************/
+		put_axis(fract, 0xFF0000);
 	}
 	return (0);
 }
