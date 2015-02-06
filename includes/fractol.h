@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/02/06 22:07:55 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
@@ -11,11 +23,11 @@
 # define TITLE		"Explorateur de fractales"
 
 ///*
-#define HOME
+//#define HOME
 //*/
 
 ///*
-//# define FT
+# define FT
 //*/
 
 # ifdef HOME
@@ -34,9 +46,12 @@
 
 # define COL_NBR	5
 # define COL_TYPE	5
+# define COLOR_TYPE	4
+# define MOVE		5
 # define STEP_DEF	100
-# define STEP_AUG	1000
-# define STEP		10
+# define STEP_AUG	10000
+# define STEP_AUGUP	5000
+# define STEP		100
 # define ITER_AUG	5
 # define ITER		10
 
@@ -125,15 +140,16 @@ struct					s_fractol
 	char			*img_add;
 	int				refresh;
 	double			iter;
-	double			step; // can be consider as k
+	double			step;
 	double			step_tmp;
+	double			step_aug;
+	double			move;
 	double			im;
 	double			re;
 	int				*col_tab;
 	int				**col_type;
 	double			m_x;
 	double			m_y;
-	double			k;
 	double			w;
 	double			h;
 	double			a;
@@ -144,10 +160,9 @@ struct					s_fractol
 	double			vel_dwn;
 	double			c_x;
 	double			c_y;
-	double			m_rx;
-	double			m_ry;
 	t_lay			*lay;
 	t_color			*color;
+	int				color_type;
 	t_fun_fract		*fun_fract;
 	t_fun_fract		fractol;
 };
@@ -243,6 +258,7 @@ int			keypress_hook(int key, void *param);
 ** event_handle_2.c
 */
 
+int			expose_hook(void *param);
 int			mouse_hook(int button, int x, int y, void *param);
 
 #endif

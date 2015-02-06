@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   event_handle.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/06 19:44:01 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/02/06 21:19:17 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 #include "check_errors.h"
 #include "debug.h"
@@ -7,7 +19,6 @@ int		key_release(int key, void *param)
 	t_fractol	*fract;
 
 	fract = (t_fractol*)param;
-	fract = fract;
 	if (key == K_ESCAPE)
 	{
 		destroy_fract(fract);
@@ -21,27 +32,24 @@ int		key_release(int key, void *param)
 		fract->vel_up = 0;
 	if (key == K_DOWN)
 		fract->vel_dwn = 0;
-//	print_type("key", &key, INT); /****/
+	fract->move = 0;
 	return (0);
 }
 
 int		keypress_hook(int key, void *param)
 {
 	t_fractol	*fract;
-	double		move;
 
 	fract = (t_fractol*)param;
-	fract = fract;
-	move = 1. / fract->k;
+	fract->move = (double)MOVE / fract->step;
 	if (key == K_LEFT)
-		fract->vel_l = move;
+		fract->vel_l = fract->move;
 	if (key == K_RIGHT)
-		fract->vel_r = -move;
+		fract->vel_r = -fract->move;
 	if (key == K_UP)
-		fract->vel_up = move;
+		fract->vel_up = fract->move;
 	if (key == K_DOWN)
-		fract->vel_dwn = -move;
-//	print_type("key", &key, INT); /*********/
+		fract->vel_dwn = -fract->move;
 	fract->refresh = 1;
 	return (0);
 }
@@ -63,7 +71,6 @@ void	set_frame(t_fractol *fract)
 		check_errors(MALLOC, "event_handle.c", "fract->img_add");
 	fract->fractol(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
-	ft_putendl("after put to window");
 	mlx_destroy_image(fract->mlx, fract->img);
 }
 
@@ -85,7 +92,10 @@ int		loop_hook(void *param)
 		set_frame(fract);
 		move_center(fract);
 		fract->refresh = 0;
-		mlx_pixel_put(fract->mlx, fract->win, fract->m_x, fract->m_y, 0xFFFFFF); /**************/
+		/*
+		** A la place du pixel put afficher un axe
+		*/
+		mlx_pixel_put(fract->mlx, fract->win, fract->m_x, fract->m_y, 0xFFFFFF00); /**************/
 	}
 	return (0);
 }

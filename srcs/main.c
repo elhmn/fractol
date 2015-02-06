@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/06 19:43:57 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/02/06 22:08:13 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 #include "debug.h"
 int					main(int ac, char **av)
@@ -12,8 +24,11 @@ int					main(int ac, char **av)
 		mlx_key_hook(fract.win, key_release, &fract);
 		mlx_mouse_hook(fract.win, mouse_hook, &fract);
 		mlx_hook(fract.win, KeyPress, KeyPressMask, keypress_hook, &fract);
+		/*
+		** penser a gerer l'expose
+		*/
 		mlx_loop_hook(fract.mlx, loop_hook, &fract);
-//		mlx_expose_hook();
+		mlx_expose_hook(fract.win, expose_hook, &fract);
 		mlx_loop(fract.mlx);
 		destroy_fract(&fract);
 	}

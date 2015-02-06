@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol_init.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/06 20:47:14 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/02/06 20:54:15 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 #include "debug.h"
 #include "check_errors.h"
@@ -58,7 +70,7 @@ void	init_fract(t_fractol *fract, char *name)
 	if (!fract)
 		check_errors(NUL, "fractol_init.c", "fract");
 	init_type(fract);
-	print_fract(fract); /****************/
+//	print_fract(fract); /****************/
 	fun_fract(fract);
 	choose_type(fract, name);
 	fract->color = NULL;
@@ -66,7 +78,8 @@ void	init_fract(t_fractol *fract, char *name)
 	if (!(fract->lay = (t_lay*)malloc(sizeof(t_lay))))
 		check_errors(MALLOC, "fractol_init.c", "fract->lay");
 	init_col_type(fract);
-	init_col_tab(fract, 4);
+	fract->color_type = COLOR_TYPE;
+	init_col_tab(fract, fract->color_type); //changer le code couleur
 	fract->vel_l = 0;
 	fract->vel_r = 0;
 	fract->vel_up = 0;
@@ -74,13 +87,12 @@ void	init_fract(t_fractol *fract, char *name)
 	fract->iter = (double)ITER;
 	fract->step = (double)STEP;
 	fract->step_tmp = (double)STEP;
+	fract->step_aug = (double)STEP_AUG;
+	fract->move = 0;
 	fract->m_x = (double)WIDTH / (double)2;
 	fract->m_y = (double)HEIGH / (double)2;
-	fract->m_rx = 0;
-	fract->m_ry = 0;
 	fract->c_x = 0;
 	fract->c_y = 0;
-	fract->k = (double)STEP;
 	fract->w = WIDTH / 2.;
 	fract->h = HEIGH / 2.;
 	fract->a = (HEIGH / 2.) * (1. / (double)STEP);

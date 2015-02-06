@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/02/06 19:40:37 by bmbarga           #+#    #+#              #
+#    Updated: 2015/02/06 22:11:05 by bmbarga          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = fractol
 
 SRC = main.c debug_01.c fractol_init.c check_errors.c fun_err_01.c \
@@ -34,9 +46,17 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ./libft/
-	$(CC) $(FLAGS) $(LIBFT) $(LIBHOME) -o $(NAME) $(OBJS) $(LIBS)
+	$(CC) $(FLAGS) $(LIBFT) $(LIB42) -o $(NAME) $(OBJS) $(LIBS)
 
 $(OBJS): $(SRCS)
+	$(CC) $(FLAGS) $(INC) -c $(SRCS)
+	mv $(OBJ) $(OBJDIR)
+
+home: obj
+	make -C ./libft/
+	$(CC) $(FLAGS) $(LIBFT) $(LIBHOME) -o $(NAME) $(OBJS) $(LIBS)
+
+obj: $(SRCS)
 	$(CC) $(FLAGS) $(INCHOME) -c $(SRCS)
 	mv $(OBJ) $(OBJDIR)
 

@@ -1,24 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   event_handle_2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/06 19:44:05 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/02/06 22:08:35 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 #include "check_errors.h"
 #include "debug.h"
 
-/*
-static void mouse_move_center(t_fractol *fract, int x, int y, int sign)
+int		expose_hook(void *param)
 {
-	if (sign >= 0)
-	{
-		fract->c_x = fract->c_x + (double)((double)WIDTH / 2. - x);
-		fract->c_y = fract->c_y + (double)((double)HEIGH / 2. - y);
-	}
-	else
-	{
-		fract->c_x = fract->c_x - (double)((double)WIDTH / 2. - x);
-		fract->c_y = fract->c_y - (double)((double)HEIGH / 2. - y);
-	}
-	fract->pre_c_x = fract->c_x;
-	fract->pre_c_y = fract->c_y;
+	t_fractol *fract;
+
+	fract = (t_fractol*)param;
+	fract->refresh = 1;
+	return (0);
 }
-*/
 
 int		mouse_hook(int button, int x, int y, void *param)
 {
@@ -27,37 +30,33 @@ int		mouse_hook(int button, int x, int y, void *param)
 	fract = (t_fractol*)param;
 	if (!fract)
 		check_errors(NUL, "event_handle_2.c", "fract");
+	fract->m_x = x;
+	fract->m_y = y;
 	if (button == MOUSE_MOTION_UP)
 	{
 		fract->step += STEP_DEF;
-		if (fract->step - fract->step_tmp >= STEP_AUG)
+		if (fract->step - fract->step_tmp >= fract->step_aug)
 		{
 			fract->iter += ITER_AUG;
 			fract->step_tmp = fract->step;
+			fract->step_aug += (double)STEP_AUGUP;
 		}
-		fract->m_x = x;
-		fract->m_y = y;
 	}
 	if (button == MOUSE_MOTION_DOWN)
 	{
 		if (fract->step > STEP_DEF)
 			fract->step -= STEP_DEF;
-		if (fract->step_tmp - fract->step >= STEP_AUG)
+		if (fract->step_tmp - fract->step >= fract->step_aug)
 		{
 			if (fract->iter >= ITER_AUG)
 			{
 				fract->iter -= ITER_AUG;
 				fract->step_tmp = fract->step;
+				if (fract->step_aug > STEP_AUG + STEP_AUGUP)
+				fract->step_aug -= (double)STEP_AUGUP;
 			}
 		}
-		fract->m_x = x;
-		fract->m_y = y;
 	}
-	print_type("button", &button, INT);
-	print_type("x", &x, INT);
-	print_type("y", &y, INT);
 	fract->refresh = 1;
-	fract->k = fract->step;
-	//Ce sont mes coords m_x qui sont fausse
 	return (0);
 }
