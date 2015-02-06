@@ -6,12 +6,23 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:43:57 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 22:17:10 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/07 00:19:50 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "debug.h"
+
+/*
+** problemes a resoudre ::
+**	1- modifier la variable de julia en gardant une image centree
+**	2- pouvoir definir un nombre d'iteration pour
+**		chaque fractal (histoire d'avoir un meilleur rendu pour julia)
+**	3- un button pour l'affichage ou non de l'axe
+**	4- un button pour revenir a l'instant fract->step = STEP
+**		&& axe au centre && fract->iter = ITER
+*/
+
 int					main(int ac, char **av)
 {
 	t_fractol		fract;

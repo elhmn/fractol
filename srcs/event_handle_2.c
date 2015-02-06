@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 22:26:25 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/06 23:59:35 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ int		mouse_hook(int button, int x, int y, void *param)
 			fract->step_tmp = fract->step;
 			fract->step_aug += (double)STEP_AUGUP;
 		}
+		fract->m_x = x;
+		fract->m_y = y;
 	}
-	if (button == MOUSE_MOTION_DOWN)
+	else if (button == MOUSE_MOTION_DOWN)
 	{
 		if (fract->step > STEP_DEF)
 			fract->step -= STEP_DEF;
@@ -71,6 +73,23 @@ int		mouse_hook(int button, int x, int y, void *param)
 				fract->step_aug -= (double)STEP_AUGUP;
 			}
 		}
+		fract->m_x = x;
+		fract->m_y = y;
+	}
+	else if (button == MOUSE_MOTION_LEFT)
+	{
+		fract->re_c += (double)INC_RE;
+		fract->im_c += (double)INC_IM;
+	}
+	else if (button == MOUSE_MOTION_RIGHT)
+	{
+		fract->re_c -= (double)INC_RE;
+		fract->im_c -= (double)INC_IM;
+	}
+	else
+	{
+		fract->m_x = x;
+		fract->m_y = y;
 	}
 	fract->refresh = 1;
 	return (0);

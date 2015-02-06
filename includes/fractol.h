@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 22:49:09 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/07 00:15:17 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@
 # define STEP_AUGUP	5000
 # define STEP		100
 # define ITER_AUG	5
-# define ITER		10
+# define ITER		500
+# define INC_RE		0.0001
+# define INC_IM		0.0001
 
 
 # define TYPE_NBR	3
@@ -160,6 +162,8 @@ struct					s_fractol
 	double			vel_dwn;
 	double			c_x;
 	double			c_y;
+	double			re_c;
+	double			im_c;
 	t_lay			*lay;
 	t_color			*color;
 	int				color_type;
