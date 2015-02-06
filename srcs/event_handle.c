@@ -28,17 +28,19 @@ int		key_release(int key, void *param)
 int		keypress_hook(int key, void *param)
 {
 	t_fractol	*fract;
+	double		move;
 
 	fract = (t_fractol*)param;
 	fract = fract;
+	move = 1. / fract->k;
 	if (key == K_LEFT)
-		fract->vel_l = MOVE_X;
+		fract->vel_l = move;
 	if (key == K_RIGHT)
-		fract->vel_r = -MOVE_X;
+		fract->vel_r = -move;
 	if (key == K_UP)
-		fract->vel_up = MOVE_Y;
+		fract->vel_up = move;
 	if (key == K_DOWN)
-		fract->vel_dwn = -MOVE_X;
+		fract->vel_dwn = -move;
 //	print_type("key", &key, INT); /*********/
 	fract->refresh = 1;
 	return (0);

@@ -129,18 +129,19 @@ void		mandelbrot(t_fractol *fract)
 	printf("MOusE_KEY BEFORE\n");
 	printf(" fract->m_x = [%.40lf]\n", (double)fract->m_x);/********/
 	printf(" fract->m_y =  [%.40lf]\n", (double)fract->m_y);/*********/
-	m_x = (double)(1. / fract->k) * (fract->m_x - fract->c_x);
-	m_y = (double)(1. / fract->k) * (double)(fract->c_y - fract->m_y);
+	m_x = fract->c_x - ((double)(fract->w - fract->m_x) / fract->k);
+	m_y = fract->c_y + ((double)(fract->h - fract->m_y) / fract->k);
 	printf("MOusE_KEY AFTER\n");
 	printf(" fract->m_x = [%.40lf]\n", (double)m_x);/********/
 	printf(" fract->m_y =  [%.40lf]\n", (double)m_y);/*********/
-
 	b = (double)1 / (double)fract->k; /****/
 	printf("k = [%lf]\n", fract->k);/*******/
 	printf("1 / k = [%lf]\n", b);/*******/
 
-	a = m_y + fract->h * (1. / fract->k);
-	tmp = m_x - fract->w * (1. / fract->k);
+	fract->c_x = m_x;
+	fract->c_y = m_y;
+	a = fract->c_y + fract->h * (1. / fract->k);
+	tmp = fract->c_x - fract->w * (1. / fract->k);
 	while (++i < HEIGH)
 	{
 		j = -1;

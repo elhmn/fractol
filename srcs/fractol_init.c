@@ -76,8 +76,10 @@ void	init_fract(t_fractol *fract, char *name)
 	fract->step_tmp = (double)STEP;
 	fract->m_x = (double)WIDTH / (double)2;
 	fract->m_y = (double)HEIGH / (double)2;
-	fract->c_x = (double)WIDTH / (double)2;
-	fract->c_y = (double)HEIGH / (double)2;
+	fract->m_rx = 0;
+	fract->m_ry = 0;
+	fract->c_x = 0;
+	fract->c_y = 0;
 	fract->k = (double)STEP;
 	fract->w = WIDTH / 2.;
 	fract->h = HEIGH / 2.;

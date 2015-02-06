@@ -35,6 +35,8 @@ int		mouse_hook(int button, int x, int y, void *param)
 			fract->iter += ITER_AUG;
 			fract->step_tmp = fract->step;
 		}
+		fract->m_x = x;
+		fract->m_y = y;
 	}
 	if (button == MOUSE_MOTION_DOWN)
 	{
@@ -48,13 +50,13 @@ int		mouse_hook(int button, int x, int y, void *param)
 				fract->step_tmp = fract->step;
 			}
 		}
+		fract->m_x = x;
+		fract->m_y = y;
 	}
 	print_type("button", &button, INT);
 	print_type("x", &x, INT);
 	print_type("y", &y, INT);
 	fract->refresh = 1;
-	fract->m_x = x;
-	fract->m_y = y;
 	fract->k = fract->step;
 	//Ce sont mes coords m_x qui sont fausse
 	return (0);

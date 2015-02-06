@@ -34,8 +34,8 @@
 
 # define COL_NBR	5
 # define COL_TYPE	5
-# define STEP_DEF	2
-# define STEP_AUG	500
+# define STEP_DEF	100
+# define STEP_AUG	1000
 # define STEP		10
 # define ITER_AUG	5
 # define ITER		10
@@ -96,9 +96,6 @@
 # define JUL		"julia"
 # define KLEIN		"kleinian"
 
-# define MOVE_X		10
-# define MOVE_Y		10
-
 # define MOUSE_MOTION_UP	4
 # define MOUSE_MOTION_DOWN	5
 # define MOUSE_MOTION_RIGHT	7
@@ -147,6 +144,8 @@ struct					s_fractol
 	double			vel_dwn;
 	double			c_x;
 	double			c_y;
+	double			m_rx;
+	double			m_ry;
 	t_lay			*lay;
 	t_color			*color;
 	t_fun_fract		*fun_fract;
