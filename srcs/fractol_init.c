@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 20:47:14 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 23:49:44 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/07 03:16:08 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_fun_fract	choose_type(t_fractol *fract, char *name)
 			break;
 	if (i == TYPE_NBR)
 	{
-		ft_putendl("Please choose between : julia, mandelbrot, kleinian");
+		ft_putendl("Please choose between : julia, mandelbrot, pythagore");
 		exit(0);
 	}
 	fract->fractol = fract->fun_fract[i];
@@ -42,7 +42,7 @@ void	init_type(t_fractol *fract)
 	fract->type[TYPE_NBR] = NULL;
 	fract->type[0] = ft_strsub(MANDEL, 0, ft_strlen(MANDEL));
 	fract->type[1] = ft_strsub(JUL, 0, ft_strlen(JUL));
-	fract->type[2] = ft_strsub(KLEIN, 0, ft_strlen(KLEIN));
+	fract->type[2] = ft_strsub(PYTHA, 0, ft_strlen(PYTHA));
 }
 
 void	fun_fract(t_fractol *fract)
@@ -54,7 +54,7 @@ void	fun_fract(t_fractol *fract)
 
 	fract->fun_fract[0] = mandelbrot;
 	fract->fun_fract[1] = julia;
-	fract->fun_fract[2] = kleinian;
+	fract->fun_fract[2] = pythagore;
 }
 
 void	init_env(t_fractol *fract)

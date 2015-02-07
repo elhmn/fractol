@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/07 00:15:17 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/07 03:16:29 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 # define TYPE_NBR	3
 # define JULIA		0
 # define MANDELBROT	1
-# define KLEINIAN	2 
+# define PYTHAGORE	2 
 
 # define MASK_R		0xFF0000
 # define MASK_G		0x00FF00
@@ -111,7 +111,7 @@
 
 # define MANDEL		"mandelbrot"
 # define JUL		"julia"
-# define KLEIN		"kleinian"
+# define PYTHA		"pythagore"
 
 # define MOUSE_MOTION_UP	4
 # define MOUSE_MOTION_DOWN	5
@@ -244,10 +244,10 @@ void		julia(t_fractol *fract);
 void		mandelbrot(t_fractol *fract);
 
 /*
-** kleinian.c
+** pythagore.c
 */
 
-void		kleinian(t_fractol *fract);
+void		pythagore(t_fractol *fract);
 
 /*
 ** event_handle.c
