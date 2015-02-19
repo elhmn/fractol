@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 20:47:14 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 11:43:37 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 12:31:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_fun_fract	choose_type(t_fractol *fract, char *name)
 			break;
 	if (i == TYPE_NBR)
 	{
-		ft_putendl("Please choose between : julia, mandelbrot, pythagore");
+		ft_putendl("Please choose between : julia, mandelbrot, mandel_cube");
 		exit(0);
 	}
 	fract->fractol = fract->fun_fract[i];
@@ -55,7 +55,7 @@ void	init_type(t_fractol *fract)
 	fract->type[TYPE_NBR] = NULL;
 	fract->type[0] = ft_strsub(MANDEL, 0, ft_strlen(MANDEL));
 	fract->type[1] = ft_strsub(JUL, 0, ft_strlen(JUL));
-	fract->type[2] = ft_strsub(PYTHA, 0, ft_strlen(PYTHA));
+	fract->type[2] = ft_strsub(M_CUBE, 0, ft_strlen(M_CUBE));
 }
 
 void	fun_fract(t_fractol *fract)
@@ -67,7 +67,7 @@ void	fun_fract(t_fractol *fract)
 
 	fract->fun_fract[0] = mandelbrot;
 	fract->fun_fract[1] = julia;
-	fract->fun_fract[2] = pythagore;
+	fract->fun_fract[2] = mandel_cube;
 }
 
 void	init_env(t_fractol *fract)

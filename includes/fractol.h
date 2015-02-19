@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 11:52:39 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 12:32:47 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@
 
 # define MANDEL		"mandelbrot"
 # define JUL		"julia"
-# define PYTHA		"pythagore"
+# define M_CUBE		"mandel_cube"
 
 # define MOUSE_MOTION_UP	4
 # define MOUSE_MOTION_DOWN	5
@@ -267,7 +267,7 @@ void		mandelbrot(t_fractol *fract);
 ** pythagore.c
 */
 
-void		pythagore(t_fractol *fract);
+void		mandel_cube(t_fractol *fract);
 
 /*
 ** event_handle.c
