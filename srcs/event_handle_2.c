@@ -6,13 +6,45 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 23:59:35 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 08:11:45 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "check_errors.h"
 #include "debug.h"
+
+int		motion_notify(int x, int y, void *param)
+{
+	t_fractol	*fract;
+
+	fract = (void*)param;
+	fract = fract;
+//	printf("x = [%d] && ", x); /***********/
+//	printf("y = [%d]\n", y); /***********/
+	fract->refresh = 1;
+	fract->axem_x = x;
+	fract->axem_y = y;
+	if (fract->jul == 1)
+	{
+		fract->re_c = ((double)(fract->w - fract->axem_x) / fract->step);
+		fract->im_c = ((double)(fract->h - fract->axem_y) / fract->step);
+	}
+	else
+	{
+		if (x < fract->w)
+		{
+			fract->re_c += (double)INC_RE;
+			fract->im_c += (double)INC_IM;
+		}
+		else
+		{
+			fract->re_c -= (double)INC_RE;
+			fract->im_c -= (double)INC_IM;
+		}
+	}
+	return (0);
+}
 
 void	put_axis(t_fractol *fract, t_uint color)
 {
@@ -22,10 +54,10 @@ void	put_axis(t_fractol *fract, t_uint color)
 	{
 		i = -1;
 		while (++i < HEIGH)
-			mlx_pixel_put(fract->mlx, fract->win, fract->m_x, i, color);
+			mlx_pixel_put(fract->mlx, fract->win, fract->axem_x, i, color);
 		i = -1;
 		while (++i < WIDTH)
-			mlx_pixel_put(fract->mlx, fract->win, i, fract->m_y, color);
+			mlx_pixel_put(fract->mlx, fract->win, i, fract->axem_y, color);
 	}
 }
 
@@ -47,6 +79,7 @@ int		mouse_hook(int button, int x, int y, void *param)
 		check_errors(NUL, "event_handle_2.c", "fract");
 	fract->m_x = x;
 	fract->m_y = y;
+	fract->zoomed = 1;
 	if (button == MOUSE_MOTION_UP)
 	{
 		fract->step += STEP_DEF;
@@ -56,8 +89,6 @@ int		mouse_hook(int button, int x, int y, void *param)
 			fract->step_tmp = fract->step;
 			fract->step_aug += (double)STEP_AUGUP;
 		}
-		fract->m_x = x;
-		fract->m_y = y;
 	}
 	else if (button == MOUSE_MOTION_DOWN)
 	{
@@ -73,24 +104,8 @@ int		mouse_hook(int button, int x, int y, void *param)
 				fract->step_aug -= (double)STEP_AUGUP;
 			}
 		}
-		fract->m_x = x;
-		fract->m_y = y;
 	}
-	else if (button == MOUSE_MOTION_LEFT)
-	{
-		fract->re_c += (double)INC_RE;
-		fract->im_c += (double)INC_IM;
-	}
-	else if (button == MOUSE_MOTION_RIGHT)
-	{
-		fract->re_c -= (double)INC_RE;
-		fract->im_c -= (double)INC_IM;
-	}
-	else
-	{
-		fract->m_x = x;
-		fract->m_y = y;
-	}
+	printf("mouse_hooked\n");
 	fract->refresh = 1;
 	return (0);
 }

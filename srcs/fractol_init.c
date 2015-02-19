@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 20:47:14 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 06:54:23 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 08:20:40 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,25 @@
 #include "debug.h"
 #include "check_errors.h"
 
+void	init_var(int *t_iter)
+{
+	if (t_iter)
+	{
+		t_iter[0] = ITER_MANDEL;
+		t_iter[1] = ITER_JUL;
+		t_iter[2] = ITER_MANDEL2;
+	}
+}
+
 t_fun_fract	choose_type(t_fractol *fract, char *name)
 {
 	int		i;
+	int		t_iter[3];
 	char	**type;
 	
 	i = -1;
 	type = fract->type;
+	init_var(t_iter);
 	while (++i < TYPE_NBR)
 		if (!ft_strcmp(type[i], name))
 			break;
@@ -30,6 +42,7 @@ t_fun_fract	choose_type(t_fractol *fract, char *name)
 		exit(0);
 	}
 	fract->fractol = fract->fun_fract[i];
+	fract->iter = t_iter[i]; 
 	return (fract->fun_fract[i]);
 }
 
@@ -84,17 +97,21 @@ void	init_fract(t_fractol *fract, char *name)
 	fract->vel_r = 0;
 	fract->vel_up = 0;
 	fract->vel_dwn = 0;
-	fract->iter = (double)ITER;
 	fract->step = (double)STEP;
 	fract->step_tmp = (double)STEP;
 	fract->step_aug = (double)STEP_AUG;
 	fract->move = 0;
+	fract->zoomed = 0;
 	fract->m_x = (double)WIDTH / (double)2;
 	fract->m_y = (double)HEIGH / (double)2;
+	fract->axem_x = fract->m_x;
+	fract->axem_y = fract->m_y;
 	fract->c_x = 0;
 	fract->c_y = 0;
 	fract->w = WIDTH / 2.;
 	fract->h = HEIGH / 2.;
+	fract->jul = 0;
+	fract->axe = 0;
 	fract->re_c = -0.772691322542185;
 	fract->im_c = 0.124281466072787;
 	fract->a = (HEIGH / 2.) * (1. / (double)STEP);

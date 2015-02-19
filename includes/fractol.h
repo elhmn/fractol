@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 06:54:25 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 08:22:15 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,13 @@
 # define STEP_DEF	100
 # define STEP_AUG	10000
 # define STEP_AUGUP	5000
-# define STEP		100
+# define STEP		200
 # define ITER_AUG	5
-# define ITER		500
+
+# define ITER_JUL		150
+# define ITER_MANDEL 	20
+# define ITER_MANDEL2	20
+
 # define INC_RE		0.0001
 # define INC_IM		0.0001
 
@@ -123,7 +127,8 @@
 # define K_DOWN 65364
 # define K_RIGHT 65363
 # define K_LEFT 65361
-//# define K_ENTER 65293
+# define K_SPACE 32
+# define K_ENTER 65293
 //# define K_PLUS 65451
 //# define K_MOINS 65453
 
@@ -150,8 +155,11 @@ struct					s_fractol
 	double			re;
 	int				*col_tab;
 	int				**col_type;
+	int				axe;
 	double			m_x;
 	double			m_y;
+	double			axem_x;
+	double			axem_y;
 	double			w;
 	double			h;
 	double			a;
@@ -166,6 +174,8 @@ struct					s_fractol
 	double			im_c;
 	t_lay			*lay;
 	t_color			*color;
+	int				zoomed; /***** OPTIONELLE *************/
+	int				jul;
 	int				color_type;
 	t_fun_fract		*fun_fract;
 	t_fun_fract		fractol;
@@ -196,6 +206,7 @@ void		init_fract(t_fractol *fract, char *name);
 void		init_env(t_fractol *fract);
 void		fun_fract(t_fractol *fract);
 t_fun_fract	choose_type(t_fractol *fract, char *name);
+void		init_var(int *t_iter);
 
 /*
 ** fractol_init_02.c
@@ -257,6 +268,7 @@ void		set_frame(t_fractol *fract);
 int			key_release(int key, void *param);
 int			loop_hook(void *param);
 int			keypress_hook(int key, void *param);
+int			motion_notify(int x, int y, void *param);
 
 /*
 ** event_handle_2.c

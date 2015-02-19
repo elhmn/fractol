@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 06:51:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 06:54:19 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 08:19:32 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,15 @@ void		julia(t_fractol *fract)
 	double	tmp;
 
 	i = -1;
-	ft_putendl("je suis Julia");
-	if (!fract->move)
+	if (!fract->move && fract->zoomed)
 	{
 		fract->c_x -= ((double)(fract->w - fract->m_x) / fract->step);
 		fract->c_y += ((double)(fract->h - fract->m_y) / fract->step);
+		fract->zoomed = 0;
+		printf("je ne me deplace pas\n"); /**********/
 	}
+	else
+		printf("je me deplace \n"); /**********/
 	a = fract->c_y + fract->h * (1. / fract->step);
 	tmp = fract->c_x - fract->w * (1. / fract->step);
 	while (++i < HEIGH)

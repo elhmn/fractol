@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:01 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/06 22:34:35 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 08:23:30 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,26 @@ int		key_release(int key, void *param)
 		fract->vel_up = 0;
 	if (key == K_DOWN)
 		fract->vel_dwn = 0;
+	if (key == K_SPACE)
+	{
+		if (fract->jul == 1)
+		{
+			fract->re_c = -0.772691322542185;
+			fract->im_c = 0.124281466072787;
+			fract->jul = 0;
+		}
+		else
+			fract->jul = 1;
+	}
+	if (key == K_ENTER)
+	{
+		if (!fract->axe)
+			fract->axe = 1;
+		else
+			fract->axe = 0;
+	}
 	fract->move = 0;
+	printf("key = [%d]\n", key); /************/
 	return (0);
 }
 
@@ -92,7 +111,8 @@ int		loop_hook(void *param)
 		set_frame(fract);
 		move_center(fract);
 		fract->refresh = 0;
-		put_axis(fract, 0xFF0000);
+		if (fract->axe)
+			put_axis(fract, 0xFF0000); /********** OPTIONELLE ********/
 	}
 	return (0);
 }
