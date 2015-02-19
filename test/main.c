@@ -1,30 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/19 06:32:40 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/02/19 06:49:30 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include <stdio.h>
+#include <stdlib.h>
+#include <mlx.h>
+#include "X.h"
 
-void	mouse_coord(double *x, double *y)
+typedef struct	s_env
 {
-	double	c_x;
-	double	c_y;
-	double	m_x;
-	double	m_y;
-	double	q;
+	void	*mlx;
+	void	*win;
+}				t_env;
 
-	q = 4;
-	c_x = 10;
-	c_y = 10;
-	m_x = 11;
-	m_y = 11;
+int		motion_notify(int x, int y, void *param)
+{
+	t_env	*env;
 
-	*x = (m_x - c_x) * (1 / q);
-	*y = (-m_y + c_y) * (1 / q);
+	env = (void*)param;
+	env = env;
+	printf("x = [%d] && ", x);
+	printf("y = [%d]\n", y);
+	return (0);
 }
 
-int		main(void)
+int		main(int ac, char **av)
 {
-	double		x;
-	double		y;
-
-	x = -1;
-	y = -1;
-	mouse_coord(&x, &y);
-	printf("x = [%lf], y = [%lf]\n", x, y);
+	t_env	env;
+	
+	env.mlx = NULL;
+	env.win = NULL;
+	av = av;
+	if (ac)
+	{
+		env.mlx = mlx_init();
+		if (!env.mlx)
+		{
+			printf("error mlx_init\n");
+			return (-1);
+		}
+		env.win = mlx_new_window(env.mlx, 400, 400, "je suis con");
+		if (!env.win)
+		{
+			printf("error mlx_new_window\n");
+			return (-1);
+		}
+		mlx_hook(env.win, MotionNotify, PointerMotionMask, motion_notify, &env);
+		mlx_loop(env.mlx);
+	}
+	return (0);
 }
