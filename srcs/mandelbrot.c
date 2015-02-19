@@ -6,13 +6,13 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:43:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/09 18:50:39 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 06:54:20 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "debug.h"
-#include <stdio.h>
+#include <stdio.h> /***********/
 
 static int get_type(t_fractol *fract, int index)
 {

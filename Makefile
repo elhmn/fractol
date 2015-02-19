@@ -6,11 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 19:40:37 by bmbarga           #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2015/02/19 06:43:26 by bmbarga          ###   ########.fr        #
-=======
-#    Updated: 2015/02/07 03:17:15 by bmbarga          ###   ########.fr        #
->>>>>>> 3262fe2cbe43a9348a1d08bc7907ccebed532c75
+#    Updated: 2015/02/19 06:55:23 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +62,7 @@ obj: $(SRCS)
 
 clean:
 	rm -rf $(OBJS)
+	rm -rf $(OBJ)
 	make clean -C ./libft/
 
 fclean: clean
