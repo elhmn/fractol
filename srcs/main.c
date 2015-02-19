@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:43:57 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 08:25:36 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 11:34:01 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@
 	lors du zoom-
 					DONE
 ** 6- button pour modifier la couleur
+					DONE
 ** 7- afficher une legende en fonction de la fractal
+					DONE
 ** 8- implementer la fractal madel carre
 */
 

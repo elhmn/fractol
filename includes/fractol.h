@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 10:31:25 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 11:52:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@
 # define TITLE		"Explorateur de fractales"
 
 ///*
-//#define HOME
+#define HOME
 //*/
 
 ///*
-# define FT
+//# define FT
 //*/
 
 # ifdef HOME
 
-#  define WIDTH		400
-#  define HEIGH		400
+#  define WIDTH		600
+#  define HEIGH		600
 
 # endif
 
@@ -54,7 +54,7 @@
 # define STEP		200
 # define ITER_AUG	5
 
-# define ITER_JUL		150
+# define ITER_JUL		200
 # define ITER_MANDEL 	20
 # define ITER_MANDEL2	20
 
@@ -129,8 +129,15 @@
 # define K_LEFT 65361
 # define K_SPACE 32
 # define K_ENTER 65293
-//# define K_PLUS 65451
-//# define K_MOINS 65453
+# define K_1		65457
+# define K_2		65458
+# define K_3		65459
+# define K_4		65460
+# define K_5		65461
+# define K_P		112
+# define K_H		104
+# define K_PLUS		65451
+# define K_MOINS	65453
 
 typedef unsigned int		t_uint;
 typedef struct s_color		t_color;
@@ -176,7 +183,9 @@ struct					s_fractol
 	t_color			*color;
 	int				zoomed; /***** OPTIONELLE *************/
 	int				jul;
+	int				jul_p;
 	int				color_type;
+	int				help;
 	t_fun_fract		*fun_fract;
 	t_fun_fract		fractol;
 };
@@ -269,6 +278,8 @@ int			key_release(int key, void *param);
 int			loop_hook(void *param);
 int			keypress_hook(int key, void *param);
 int			motion_notify(int x, int y, void *param);
+void		print_legend(t_fractol *fract);
+void		string_put(t_fractol *fract, int x, int y, char *str);
 
 /*
 ** event_handle_2.c

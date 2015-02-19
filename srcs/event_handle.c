@@ -6,13 +6,39 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:01 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 10:32:57 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 11:59:42 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "check_errors.h"
 #include "debug.h"
+
+void	string_put(t_fractol *fract, int x, int y, char *str)
+{
+	t_uint		color;
+
+	if (fract->iter > 200)
+		color = 0;
+	else
+		color = 0xFFFFFF;
+	mlx_string_put(fract->mlx, fract->win, x, y, color, str);
+}
+
+void	print_legend(t_fractol *fract)
+{
+	string_put(fract, WIDTH - 250, HEIGH - 220, "Keys :: :D");
+	string_put(fract, WIDTH - 250, HEIGH - 200, "1- ENTER to print axis.");
+	string_put(fract, WIDTH - 250, HEIGH - 180, "2- SPACE to change JULIA type.");
+	string_put(fract, WIDTH - 250, HEIGH - 160, "3- P to pause/resume JULIA variable.");
+	string_put(fract, WIDTH - 250, HEIGH - 140, "4- DIRECTIONAL key to explore.");
+	string_put(fract, WIDTH - 250, HEIGH - 120, "5- SCROLL in/out to zoom.");
+	string_put(fract, WIDTH - 250, HEIGH - 100, "6- 1 / 2 / 3 / 4 / 5 to change color.");
+	string_put(fract, WIDTH - 250, HEIGH - 80, "7- Click LEFT to center to axis position.");
+	string_put(fract, WIDTH - 250, HEIGH - 60, "8- + / - to increase/decrease iteration.");
+	string_put(fract, WIDTH - 250, HEIGH - 40, "9- H show/hide the legend.");
+	string_put(fract, WIDTH - 250, HEIGH - 20, "10- ESCAPE to quit.");
+}
 
 int		key_release(int key, void *param)
 {
@@ -50,11 +76,57 @@ int		key_release(int key, void *param)
 		else
 			fract->axe = 0;
 	}
-//	if (key == )
-//	{
-//
-//	}
+	if (key == K_1)
+	{
+		fract->color_type = 0;
+		init_col_tab(fract, fract->color_type); //changer le code couleur
+	}
+	if (key == K_2)
+	{
+		fract->color_type = 1;
+		init_col_tab(fract, fract->color_type); //changer le code couleur
+	}
+	if (key == K_3)
+	{
+		fract->color_type = 2;
+		init_col_tab(fract, fract->color_type); //changer le code couleur
+	}
+	if (key == K_4)
+	{
+		fract->color_type = 3;
+		init_col_tab(fract, fract->color_type); //changer le code couleur
+	}
+	if (key == K_5)
+	{
+		fract->color_type = 4;
+		init_col_tab(fract, fract->color_type); //changer le code couleur
+	}
+	if (key == K_P)
+	{
+		if (!fract->jul_p)
+			fract->jul_p = 1;
+		else
+			fract->jul_p = 0;
+	}
+	if (key == K_H)
+	{
+		if (!fract->help)
+			fract->help = 1;
+		else
+			fract->help = 0;
+	}
+	if (key == K_PLUS)
+	{
+		if (fract->iter <= 5000.)
+			fract->iter += 100;
+	}
+	if (key == K_MOINS)
+	{
+		if (fract->iter >= 100.)
+			fract->iter -= 100;
+	}
 	fract->move = 0;
+	fract->refresh = 1;
 	printf("key = [%d]\n", key); /************/
 	return (0);
 }
@@ -117,6 +189,8 @@ int		loop_hook(void *param)
 		fract->refresh = 0;
 		if (fract->axe)
 			put_axis(fract, 0xFF0000); /********** OPTIONELLE ********/
+		if (fract->help)
+			print_legend(fract);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 09:41:28 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 11:38:05 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,26 @@ int		motion_notify(int x, int y, void *param)
 	fract->refresh = 1;
 	fract->axem_x = x;
 	fract->axem_y = y;
-	if (fract->jul == 1)
+	if (fract->jul_p)
 	{
-		fract->re_c = ((double)(fract->w - fract->axem_x) / fract->step);
-		fract->im_c = ((double)(fract->h - fract->axem_y) / fract->step);
-	}
-	else
-	{
-		if (x < fract->w)
+		
+		if (fract->jul == 1)
 		{
-			fract->re_c += (double)INC_RE;
-			fract->im_c += (double)INC_IM;
+			fract->re_c = ((double)(fract->w - fract->axem_x) / fract->step);
+			fract->im_c = ((double)(fract->h - fract->axem_y) / fract->step);
 		}
 		else
 		{
-			fract->re_c -= (double)INC_RE;
-			fract->im_c -= (double)INC_IM;
+			if (x < fract->w)
+			{
+				fract->re_c += (double)INC_RE;
+				fract->im_c += (double)INC_IM;
+			}
+			else
+			{
+				fract->re_c -= (double)INC_RE;
+				fract->im_c -= (double)INC_IM;
+			}
 		}
 	}
 	return (0);

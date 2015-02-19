@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 20:47:14 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 10:26:33 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 11:43:37 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ void	init_fract(t_fractol *fract, char *name)
 	fract->w = WIDTH / 2.;
 	fract->h = HEIGH / 2.;
 	fract->jul = 0;
+	fract->jul_p = 1;
+	fract->help = 1;
 	fract->axe = 0;
 	fract->re_c = -0.772691322542185;
 	fract->im_c = 0.124281466072787;

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 06:32:40 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 07:02:42 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 12:00:15 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		main(int ac, char **av)
 			return (-1);
 		}
 		mlx_hook(env.win, MotionNotify, PointerMotionMask, motion_notify, &env);
+		mlx_string_put(env.mlx, env.win, 300, 20, 0xFFFFFF, "je suis con");
 		mlx_loop(env.mlx);
 	}
 	return (0);
