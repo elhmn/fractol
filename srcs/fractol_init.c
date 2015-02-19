@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 20:47:14 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 08:20:40 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 10:26:33 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,22 +117,3 @@ void	init_fract(t_fractol *fract, char *name)
 	fract->a = (HEIGH / 2.) * (1. / (double)STEP);
 	fract->b = (WIDTH / 2.) * -1 * (1. / (double)STEP);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

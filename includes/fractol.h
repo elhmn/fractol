@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 08:22:15 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 10:31:25 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 
 # define COL_NBR	5
 # define COL_TYPE	5
-# define COLOR_TYPE	4
+# define COLOR_TYPE	3
 # define MOVE		5
 # define STEP_DEF	100
 # define STEP_AUG	10000
@@ -58,8 +58,8 @@
 # define ITER_MANDEL 	20
 # define ITER_MANDEL2	20
 
-# define INC_RE		0.0001
-# define INC_IM		0.0001
+# define INC_RE		0.001
+# define INC_IM		0.001
 
 
 # define TYPE_NBR	3

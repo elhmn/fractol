@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:01 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 08:23:30 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 10:32:57 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ int		key_release(int key, void *param)
 		else
 			fract->axe = 0;
 	}
+//	if (key == )
+//	{
+//
+//	}
 	fract->move = 0;
 	printf("key = [%d]\n", key); /************/
 	return (0);
