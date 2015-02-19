@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:01 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 13:05:56 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 13:15:34 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,6 @@ int		key_release(int key, void *param)
 	}
 	fract->move = 0;
 	fract->refresh = 1;
-	printf("key = [%d]\n", key); /************/
 	return (0);
 }
 
@@ -141,7 +140,10 @@ int		keypress_hook(int key, void *param)
 	t_fractol	*fract;
 
 	fract = (t_fractol*)param;
-	fract->move = (double)MOVE / fract->step;
+	if (fract->step > 0.)
+		fract->move = (double)MOVE / fract->step;
+	else
+		fract->move = 0.;
 	if (key == K_LEFT)
 		fract->vel_l = fract->move;
 	if (key == K_RIGHT)

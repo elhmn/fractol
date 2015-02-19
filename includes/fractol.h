@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 13:03:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 13:11:06 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 
 # ifdef HOME
 
-#  define WIDTH		600
-#  define HEIGH		600
+#  define WIDTH		800
+#  define HEIGH		800
 
 # endif
 

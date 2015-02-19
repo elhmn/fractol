@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 12:33:46 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 12:55:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 13:07:04 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void		mandel_cube(t_fractol *fract)
 		fract->c_x -= ((double)(fract->w - fract->m_x) / fract->step);
 		fract->c_y += ((double)(fract->h - fract->m_y) / fract->step);
 		fract->zoomed = 0;
-		printf("je ne me deplace pas\n"); /**********/
 	}
 	a = fract->c_y + fract->h * (1. / fract->step);
 	tmp = fract->c_x - fract->w * (1. / fract->step);

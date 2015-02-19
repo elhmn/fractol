@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 11:38:05 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 13:08:00 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int		mouse_hook(int button, int x, int y, void *param)
 			}
 		}
 	}
-	printf("mouse_hooked\n");
 	fract->refresh = 1;
 	return (0);
 }
