@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 12:32:47 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 13:03:01 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@
 # endif
 
 # define COL_NBR	5
-# define COL_TYPE	5
-# define COLOR_TYPE	3
+# define COL_TYPE	6
+# define COLOR_TYPE	5
 # define MOVE		5
 # define STEP_DEF	100
 # define STEP_AUG	10000
@@ -113,6 +113,12 @@
 # define COL_T4_03	0x250240
 # define COL_T4_04	0x8609E5
 
+# define COL_T5_00	0x313331
+# define COL_T5_01	0x313331
+# define COL_T5_02	0x3E403E 
+# define COL_T5_03	0x6A6E6A
+# define COL_T5_04	0x777A77
+
 # define MANDEL		"mandelbrot"
 # define JUL		"julia"
 # define M_CUBE		"mandel_cube"
@@ -134,6 +140,7 @@
 # define K_3		65459
 # define K_4		65460
 # define K_5		65461
+# define K_6		65462
 # define K_P		112
 # define K_H		104
 # define K_PLUS		65451

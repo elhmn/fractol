@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 06:51:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 06:54:22 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 13:01:40 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,15 @@ void	init_palette_04(int *tab)
 	tab[4] = COL_T4_04;
 }
 
+void	init_palette_05(int *tab)
+{	
+	tab[0] = COL_T5_00;
+	tab[1] = COL_T5_01;
+	tab[2] = COL_T5_02;
+	tab[3] = COL_T5_03;
+	tab[4] = COL_T5_04;
+}
+
 void	init_col_type(t_fractol *fract)
 {
 	int		**tab;
@@ -80,6 +89,7 @@ void	init_col_type(t_fractol *fract)
 	init_palette_02(tab[2]);
 	init_palette_03(tab[3]);
 	init_palette_04(tab[4]);
+	init_palette_05(tab[5]);
 }
 
 void	init_col_tab(t_fractol *fract, int type)

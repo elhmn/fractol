@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:01 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/19 11:59:42 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/19 13:05:56 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_legend(t_fractol *fract)
 	string_put(fract, WIDTH - 250, HEIGH - 160, "3- P to pause/resume JULIA variable.");
 	string_put(fract, WIDTH - 250, HEIGH - 140, "4- DIRECTIONAL key to explore.");
 	string_put(fract, WIDTH - 250, HEIGH - 120, "5- SCROLL in/out to zoom.");
-	string_put(fract, WIDTH - 250, HEIGH - 100, "6- 1 / 2 / 3 / 4 / 5 to change color.");
+	string_put(fract, WIDTH - 250, HEIGH - 100, "6- 1 / 2 / 3 / 4 / 5 / 6 to change color.");
 	string_put(fract, WIDTH - 250, HEIGH - 80, "7- Click LEFT to center to axis position.");
 	string_put(fract, WIDTH - 250, HEIGH - 60, "8- + / - to increase/decrease iteration.");
 	string_put(fract, WIDTH - 250, HEIGH - 40, "9- H show/hide the legend.");
@@ -99,6 +99,11 @@ int		key_release(int key, void *param)
 	if (key == K_5)
 	{
 		fract->color_type = 4;
+		init_col_tab(fract, fract->color_type); //changer le code couleur
+	}
+	if (key == K_6)
+	{
+		fract->color_type = 5;
 		init_col_tab(fract, fract->color_type); //changer le code couleur
 	}
 	if (key == K_P)
