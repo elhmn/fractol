@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:56 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/20 11:14:08 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/20 11:36:49 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,6 +275,7 @@ void						init_palette_05(int *tab);
 
 void						destroy_fract(t_fractol *fract);
 void						destroy_type(t_fractol *fract);
+void						destroy_col_type(t_fractol *fract);
 
 /*
 ** draw.c

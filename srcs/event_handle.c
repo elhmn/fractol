@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 19:44:01 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/20 11:18:14 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/20 12:31:58 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,8 @@ int		keypress_hook(int key, void *param)
 
 void	set_frame(t_fractol *fract)
 {
-	int		*line;
-	int		*endian;
-	int		*bpp;
-
-	line = &(fract->lay->line);
-	endian = &(fract->lay->endian);
-	bpp = &(fract->lay->bpp);
-	fract->img = mlx_new_image(fract->mlx, WIDTH, HEIGH);
-	if (!fract->img)
-		check_errors(MALLOC, "event_handle.c", "fract->img");
-	fract->img_add = mlx_get_data_addr(fract->img, bpp, line, endian);
-	if (!fract->img_add)
-		check_errors(MALLOC, "event_handle.c", "fract->img_add");
 	fract->fractol(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
-	mlx_destroy_image(fract->mlx, fract->img);
 }
 
 void	move_center(t_fractol *fract)

@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 19:40:37 by bmbarga           #+#    #+#              #
-#    Updated: 2015/02/20 11:09:55 by bmbarga          ###   ########.fr        #
+#    Updated: 2015/02/20 12:34:47 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,5 +68,6 @@ clean:
 
 fclean: clean
 	make fclean -C ./libft/
+	rm $(NAME)
 
 re: fclean all

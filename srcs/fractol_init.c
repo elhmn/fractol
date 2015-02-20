@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 20:47:14 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/20 10:49:31 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/20 12:12:47 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,23 @@ static void	aux_init_fract(t_fractol *fract)
 
 void		init_env(t_fractol *fract)
 {
+	int		*line;
+	int		*endian;
+	int		*bpp;
+
+	line = &(fract->lay->line);
+	endian = &(fract->lay->endian);
+	bpp = &(fract->lay->bpp);
 	if (!(fract->mlx = mlx_init()))
 		check_errors(MALLOC, "fractol_init.c", "fract->mlx");
 	if (!(fract->win = mlx_new_window(fract->mlx, WIDTH, HEIGH, TITLE)))
 		check_errors(MALLOC, "fractol_init.c", "fract->mlx");
+	fract->img = mlx_new_image(fract->mlx, WIDTH, HEIGH);
+	if (!fract->img)
+		check_errors(MALLOC, "event_handle.c", "fract->img");
+	fract->img_add = mlx_get_data_addr(fract->img, bpp, line, endian);
+	if (!fract->img_add)
+		check_errors(MALLOC, "event_handle.c", "fract->img_add");
 }
 
 void		init_fract(t_fractol *fract, char *name)
@@ -74,6 +87,7 @@ void		init_fract(t_fractol *fract, char *name)
 		check_errors(MALLOC, "fractol_init.c", "fract->lay");
 	init_col_type(fract);
 	fract->color_type = COLOR_TYPE;
+	fract->col_tab = NULL;
 	init_col_tab(fract, fract->color_type);
 	aux_init_fract(fract);
 }

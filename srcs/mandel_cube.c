@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 12:33:46 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/20 10:11:22 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/20 12:29:19 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void			mandel_cube(t_fractol *fract)
 			fract->re = 0;
 			get_color(fract, is_mandel_cube(fract, b, a));
 			pixel_put_img(fract, j, i, fract->color);
+			free(fract->color);
 			b += 1. / fract->step;
 		}
 		a -= 1. / fract->step;

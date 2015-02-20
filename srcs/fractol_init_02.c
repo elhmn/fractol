@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 06:51:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/20 11:04:33 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/20 12:19:54 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ void	init_col_tab(t_fractol *fract, int type)
 	i = -1;
 	if (!fract)
 		check_errors(NUL, "frac_init_02.c", "fract");
-	fract->col_tab = (int*)malloc(sizeof(int) * COL_NBR);
-	if (!fract->col_tab)
-		check_errors(NUL, "fract_init_02.c", "fract->col_tab");
 	while (++i < COL_TYPE)
 	{
 		if (i == type)

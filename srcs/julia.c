@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 06:51:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/20 10:11:24 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/20 12:29:32 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void		julia(t_fractol *fract)
 			fract->re = 0;
 			get_color(fract, is_julia(fract, b, a));
 			pixel_put_img(fract, j, i, fract->color);
+			free(fract->color);
 			b += 1. / fract->step;
 		}
 		a -= 1. / fract->step;
