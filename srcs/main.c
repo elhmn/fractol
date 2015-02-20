@@ -30,6 +30,9 @@
 ** 7- afficher une legende en fonction de la fractal
 					DONE
 ** 8- implementer la fractal madel cube
+					DONE
+** 9- changement du type de fractal en appuyant sur une touche
+					DONE
 */
 
 int					main(int ac, char **av)

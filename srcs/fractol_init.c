@@ -46,7 +46,6 @@ t_fun_fract	choose_type(t_fractol *fract, char *name)
 	return (fract->fun_fract[i]);
 }
 
-
 void	init_type(t_fractol *fract)
 {
 	fract->type = (char**)malloc(sizeof(char*) * (TYPE_NBR + 1));

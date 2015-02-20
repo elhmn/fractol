@@ -23,6 +23,10 @@
 # define TITLE		"Explorateur de fractales"
 
 ///*
+//# define SMALL
+//*/
+
+///*
 #define HOME
 //*/
 
@@ -43,6 +47,14 @@
 #  define HEIGH		768
 
 # endif
+
+# ifdef SMALL
+
+#  define WIDTH		400
+#  define HEIGH		400
+
+# endif
+
 
 # define COL_NBR	5
 # define COL_TYPE	6
@@ -135,12 +147,27 @@
 # define K_LEFT 65361
 # define K_SPACE 32
 # define K_ENTER 65293
+
+/*
 # define K_1		65457
 # define K_2		65458
 # define K_3		65459
 # define K_4		65460
 # define K_5		65461
 # define K_6		65462
+*/
+
+# define K_1		49
+# define K_2		50
+# define K_3		51
+# define K_4		52
+# define K_5		53
+# define K_6		54
+
+
+# define K_A		97
+# define K_S		100
+# define K_D		115
 # define K_P		112
 # define K_H		104
 # define K_PLUS		65451

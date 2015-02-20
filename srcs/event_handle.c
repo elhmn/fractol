@@ -27,17 +27,18 @@ void	string_put(t_fractol *fract, int x, int y, char *str)
 
 void	print_legend(t_fractol *fract)
 {
-	string_put(fract, WIDTH - 250, HEIGH - 220, "Keys :: :D");
-	string_put(fract, WIDTH - 250, HEIGH - 200, "1- ENTER to print axis.");
-	string_put(fract, WIDTH - 250, HEIGH - 180, "2- SPACE to change JULIA type.");
-	string_put(fract, WIDTH - 250, HEIGH - 160, "3- P to pause/resume JULIA variable.");
-	string_put(fract, WIDTH - 250, HEIGH - 140, "4- DIRECTIONAL key to explore.");
-	string_put(fract, WIDTH - 250, HEIGH - 120, "5- SCROLL in/out to zoom.");
-	string_put(fract, WIDTH - 250, HEIGH - 100, "6- 1 / 2 / 3 / 4 / 5 / 6 to change color.");
-	string_put(fract, WIDTH - 250, HEIGH - 80, "7- Click LEFT to center to axis position.");
-	string_put(fract, WIDTH - 250, HEIGH - 60, "8- + / - to increase/decrease iteration.");
-	string_put(fract, WIDTH - 250, HEIGH - 40, "9- H show/hide the legend.");
-	string_put(fract, WIDTH - 250, HEIGH - 20, "10- ESCAPE to quit.");
+	string_put(fract, WIDTH - 250, HEIGH - 240, "Keys :: :D");
+	string_put(fract, WIDTH - 250, HEIGH - 220, "1- ENTER to print axis.");
+	string_put(fract, WIDTH - 250, HEIGH - 200, "2- SPACE to change JULIA type.");
+	string_put(fract, WIDTH - 250, HEIGH - 180, "3- P to pause/resume JULIA variable.");
+	string_put(fract, WIDTH - 250, HEIGH - 160, "4- A/S/D to change fractal type.");
+	string_put(fract, WIDTH - 250, HEIGH - 140, "5- DIRECTIONAL key to explore.");
+	string_put(fract, WIDTH - 250, HEIGH - 120, "6- SCROLL in/out to zoom.");
+	string_put(fract, WIDTH - 250, HEIGH - 100, "7- 1 / 2 / 3 / 4 / 5 / 6 to change color.");
+	string_put(fract, WIDTH - 250, HEIGH - 80, "8- Click LEFT to center to axis position.");
+	string_put(fract, WIDTH - 250, HEIGH - 60, "9- + / - to increase/decrease iteration.");
+	string_put(fract, WIDTH - 250, HEIGH - 40, "10- H show/hide the legend.");
+	string_put(fract, WIDTH - 250, HEIGH - 20, "11- ESCAPE to quit.");
 }
 
 int		key_release(int key, void *param)
@@ -45,20 +46,21 @@ int		key_release(int key, void *param)
 	t_fractol	*fract;
 
 	fract = (t_fractol*)param;
+//	printf("key = [%d]\n", key); /********/
 	if (key == K_ESCAPE)
 	{
 		destroy_fract(fract);
 		exit(0);
 	}
-	if (key == K_LEFT)
+	else if (key == K_LEFT)
 		fract->vel_l = 0;
-	if (key == K_RIGHT)
+	else if (key == K_RIGHT)
 		fract->vel_r = 0;
-	if (key == K_UP)
+	else if (key == K_UP)
 		fract->vel_up = 0;
-	if (key == K_DOWN)
+	else if (key == K_DOWN)
 		fract->vel_dwn = 0;
-	if (key == K_SPACE)
+	else if (key == K_SPACE)
 	{
 		if (fract->jul == 1)
 		{
@@ -69,67 +71,73 @@ int		key_release(int key, void *param)
 		else
 			fract->jul = 1;
 	}
-	if (key == K_ENTER)
+	else if (key == K_ENTER)
 	{
 		if (!fract->axe)
 			fract->axe = 1;
 		else
 			fract->axe = 0;
 	}
-	if (key == K_1)
+	else if (key == K_1)
 	{
 		fract->color_type = 0;
 		init_col_tab(fract, fract->color_type); //changer le code couleur
 	}
-	if (key == K_2)
+	else if (key == K_2)
 	{
 		fract->color_type = 1;
 		init_col_tab(fract, fract->color_type); //changer le code couleur
 	}
-	if (key == K_3)
+	else if (key == K_3)
 	{
 		fract->color_type = 2;
 		init_col_tab(fract, fract->color_type); //changer le code couleur
 	}
-	if (key == K_4)
+	else if (key == K_4)
 	{
 		fract->color_type = 3;
 		init_col_tab(fract, fract->color_type); //changer le code couleur
 	}
-	if (key == K_5)
+	else if (key == K_5)
 	{
 		fract->color_type = 4;
 		init_col_tab(fract, fract->color_type); //changer le code couleur
 	}
-	if (key == K_6)
+	else if (key == K_6)
 	{
 		fract->color_type = 5;
 		init_col_tab(fract, fract->color_type); //changer le code couleur
 	}
-	if (key == K_P)
+	else if (key == K_P)
 	{
 		if (!fract->jul_p)
 			fract->jul_p = 1;
 		else
 			fract->jul_p = 0;
 	}
-	if (key == K_H)
+	else if (key == K_H)
 	{
 		if (!fract->help)
 			fract->help = 1;
 		else
 			fract->help = 0;
 	}
-	if (key == K_PLUS)
+	else if (key == K_PLUS)
 	{
 		if (fract->iter <= 5000.)
-			fract->iter += 100;
+			fract->iter += 20;
 	}
-	if (key == K_MOINS)
+	else if (key == K_MOINS)
 	{
-		if (fract->iter >= 100.)
-			fract->iter -= 100;
+		if (fract->iter >= 20.)
+			fract->iter -= 20;
 	}
+	else if (key == K_A)
+		choose_type(fract, JUL);
+	else if (key == K_S)
+		choose_type(fract, MANDEL);
+	else if (key == K_D)
+		choose_type(fract, M_CUBE);
 	fract->move = 0;
 	fract->refresh = 1;
 	return (0);
@@ -146,11 +154,11 @@ int		keypress_hook(int key, void *param)
 		fract->move = 0.;
 	if (key == K_LEFT)
 		fract->vel_l = fract->move;
-	if (key == K_RIGHT)
+	else if (key == K_RIGHT)
 		fract->vel_r = -fract->move;
-	if (key == K_UP)
+	else if (key == K_UP)
 		fract->vel_up = fract->move;
-	if (key == K_DOWN)
+	else if (key == K_DOWN)
 		fract->vel_dwn = -fract->move;
 	fract->refresh = 1;
 	return (0);
