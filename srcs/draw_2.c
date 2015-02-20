@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_fract.c                                    :+:      :+:    :+:   */
+/*   draw_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/20 10:12:09 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/02/20 10:12:27 by bmbarga          ###   ########.fr       */
+/*   Created: 2015/02/20 10:25:07 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/02/20 10:26:08 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "debug.h"
 #include "check_errors.h"
 
-void	destroy_type(t_fractol *fract)
+void			put_axis(t_fractol *fract, t_uint color)
 {
-	char	**tmp;
 	int		i;
 
-	i = -1;
-	tmp = fract->type;
-	while (++i < TYPE_NBR)
-		free(tmp[i]);
-	free(fract->type);
-}
-
-void	destroy_fract(t_fractol *fract)
-{
-	if (!fract)
-		check_errors(NUL, "destroy_fract.c", "fract");
-	destroy_type(fract);
-	if (fract->win)
-		mlx_destroy_window(fract->mlx, fract->win);
-	if (fract->fun_fract)
-		free(fract->fun_fract);
-	if (fract->color)
-		free(fract->color);
-	if (fract->lay)
-		free(fract->lay);
+	if (fract)
+	{
+		i = -1;
+		while (++i < HEIGH)
+			mlx_pixel_put(fract->mlx, fract->win, fract->axem_x, i, color);
+		i = -1;
+		while (++i < WIDTH)
+			mlx_pixel_put(fract->mlx, fract->win, i, fract->axem_y, color);
+	}
 }

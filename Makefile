@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 19:40:37 by bmbarga           #+#    #+#              #
-#    Updated: 2015/02/19 12:33:34 by bmbarga          ###   ########.fr        #
+#    Updated: 2015/02/20 11:09:55 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = fractol
 
 SRC = main.c debug_01.c fractol_init.c check_errors.c fun_err_01.c \
 		destroy_fract.c julia.c mandelbrot.c mandel_cube.c event_handle.c \
-		fractol_init_02.c draw.c color.c event_handle_2.c
+		fractol_init_02.c draw.c color.c event_handle_2.c \
+		draw_2.c fractol_init_03.c init_color.c event_handle_3.c
 
 OBJ = $(SRC:.c=.o)
 

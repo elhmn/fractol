@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 10:28:40 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/18 19:33:45 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/02/20 10:11:56 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		print_type(char *str, void *elem, int type)
 	}
 }
 
-void	print_fract_type(char **type)
+void		print_fract_type(char **type)
 {
 	int		i;
 
@@ -54,7 +54,7 @@ void	print_fract_type(char **type)
 	}
 }
 
-void	print_fract(t_fractol *fract)
+void		print_fract(t_fractol *fract)
 {
 	if (!fract)
 		check_errors(NUL, "debug_01.c", "fract");
