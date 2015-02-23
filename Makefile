@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 19:40:37 by bmbarga           #+#    #+#              #
-#    Updated: 2015/02/20 12:34:47 by bmbarga          ###   ########.fr        #
+#    Updated: 2015/02/23 10:32:25 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,21 +27,21 @@ SRCS = $(addprefix $(SRCDIR), $(SRC))
 
 OBJS = $(addprefix $(OBJDIR), $(OBJ))
 
-INCHOME = -I ./includes/ -I /usr/include/X11
+inchome = -i ./includes/ -i /usr/include/x11
 
-INC = -I ./includes/ -I /usr/X11/include/X11
+inc = -i ./includes/ -i /usr/x11/include/x11
 
-LIB42 = -L /usr/X11/lib
+lib42 = -l /usr/x11/lib
 
-LIBHOME = -L /usr/lib64/X11
+libhome = -l /usr/lib64/x11
 
-LIBFT = -L ./libft/
+libft = -l ./libft/
 
-LIBS = -lft -lX11 -lXext -lmlx -lm
+libs = -lft -lx11 -lxext -lmlx -lm
 
-CC = gcc
+cc = gcc
 
-FLAGS = -Wall -Werror -Wextra
+flags = -wall -werror -wextra
 
 all: $(NAME)
 
