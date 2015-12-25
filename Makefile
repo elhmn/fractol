@@ -27,17 +27,17 @@ SRCS = $(addprefix $(SRCDIR), $(SRC))
 
 OBJS = $(addprefix $(OBJDIR), $(OBJ))
 
-INCHOME = -I ./includes/ -I  /usr/include/x11
+INCHOME = -I ./includes/ -I  /usr/include/X11
 
-INC = -I ./includes/ -I /usr/x11/include/x11
+INC = -I ./includes/ -I /usr/x11/include/X11
 
-LIB42 = -L /usr/x11/lib
+LIB42 = -L /usr/X11/lib
 
-LIBHOME = -L /usr/lib64/x11
+LIBHOME = -L /usr/lib64/X11
 
 LIBFT = -L ./libft/
 
-LIBS = -lft -lx11 -lxext -lmlx -lm
+LIBS = -lft -lX11 -lXext -lmlx -lm
 
 CC = gcc
 
